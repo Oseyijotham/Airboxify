@@ -3,7 +3,7 @@ import { register } from '../../redux/AuthRedux/operations';
 import css from './Register.module.css';
 import { NavLink } from 'react-router-dom';
 import Notiflix from 'notiflix';
-import svg from '../SharedLayout/icons.svg';
+import logoImage from './Airboxify.png';
 
 export const Register = () => {
 const dispatch = useDispatch();
@@ -67,19 +67,22 @@ const handleSubmit = e => {
 
     return (
       <div className={css.login}>
-        <NavLink
-          to="/"
-        >
+        <NavLink to="/">
           <div className={css.symbol}>
             <div className={css.logo}>
-              <div role="img" aria-label="computer icon" className={css.frame}>
-                <svg width="160px" height="47px">
-                  <use href={`${svg}#icon-oasis-logo`}></use>
-                </svg>
+              <div role="img" aria-label="computer icon">
+                <img
+                  src={logoImage}
+                  alt="Logo"
+                  width="80px"
+                  className={css.frame}
+                />
               </div>
               <div className={css.iconLabelWrapper}>
-                <span className={css.iconLabel}>Oasis</span>
-                <span className={css.iconLabel}>Tasks</span>
+                <span className={css.iconLabelStart}>Airbox</span>
+                <span className={css.iconLabelEnd}>
+                  <i>ify</i>
+                </span>
               </div>
             </div>
           </div>

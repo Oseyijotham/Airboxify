@@ -8,7 +8,8 @@ export const Container = styled.div`
 `;
 
 export const Frame = styled.div`
- 
+ border-radius: 30px;
+ overflow: hidden;
 `;
 
 export const Icon = styled.svg`
@@ -16,17 +17,25 @@ export const Icon = styled.svg`
 `;
 
 export const IconLabelWrapper = styled.div`
-  display:flex;
-  align-items: flex-end;
-  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const IconLabel = styled.span`
+export const IconLabelStart = styled.span`
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Comic Sans MS';
   font-size: 20px;
-  font-weight: 400;
-  color: #fff;
+  font-weight: 700;
+  color: #ffb800;
+`;
+
+export const IconLabelEnd = styled.span`
+  display: inline-block;
+  font-family: 'Comic Sans MS';
+  font-size: 20px;
+  font-weight: 700;
+  color: #9225ff;
 `;
 
 export const Greeting = styled.div`
@@ -53,7 +62,7 @@ export const Header = styled.header`
   margin-bottom: 8px;
   margin-top: 8px;
   border: none;
-  background-image: linear-gradient(#9225ff, #ffb800);
+  background-image: linear-gradient(to top left, #ffb800, #9225ff);
   backdrop-filter: blur(30px);
   border-radius: 30px;
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));

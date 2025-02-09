@@ -5,7 +5,8 @@ import {
   Logo,
   Link,
   Frame,
-  IconLabel,
+  IconLabelStart,
+  IconLabelEnd,
   Symbol,
   Button,
   Greeting,
@@ -15,7 +16,7 @@ import { Suspense } from 'react';
 import { logOut } from '../../redux/AuthRedux/operations';
 import { useDispatch } from 'react-redux';
 import { useAuthHook } from '../../customHook/customHook';
-import svg from './icons.svg';
+import logoImage from './Airboxify.png';
 
 
 export const SharedLayout = () => {
@@ -28,21 +29,21 @@ export const SharedLayout = () => {
         <Symbol to="/">
           <Logo>
             <Frame role="img" aria-label="computer icon">
-              <svg width="160px" height="47px">
-                <use href={`${svg}#icon-oasis-logo`}></use>
-              </svg>
+              <img src={logoImage} alt="Logo" width="80px" />
             </Frame>
             <IconLabelWrapper>
-              <IconLabel>Oasis</IconLabel>
-              <IconLabel>Tasks</IconLabel>
+              <IconLabelStart>Airbox</IconLabelStart>
+              <IconLabelEnd>
+                <i>ify</i>
+              </IconLabelEnd>
             </IconLabelWrapper>
           </Logo>
         </Symbol>
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <Greeting>Welcome,</Greeting> <Greeting>{user.firstname}</Greeting>

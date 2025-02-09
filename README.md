@@ -1,1 +1,1 @@
-A task management system for Oasis Management Company
+A Cloud based SAAS solution for businesses.

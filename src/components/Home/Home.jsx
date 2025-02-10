@@ -13,6 +13,7 @@ import svg from '../SharedLayout/icons.svg';
 import icon from './list2.svg';
 
 
+
 export const Home = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -41,9 +42,9 @@ export const Home = () => {
           </div>
           <span>
             <span className={css.homeDisplayTitle}>
-              Your Tasking{' '}
+              Welcome{' '}
               <span className={css.homeDisplayTitlePart}>
-                <i>Oasis</i>
+                <i>{myUser.firstname}</i>
               </span>
             </span>
             <span className={css.homeDisplaySlogan}>

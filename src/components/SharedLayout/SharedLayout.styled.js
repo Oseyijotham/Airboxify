@@ -5,6 +5,89 @@ export const Container = styled.div`
   flex-grow: 1;
   margin: 0 auto;
   padding: 0 16px;
+
+  @media (min-width: 320px) {
+    width: 320px;
+  }
+
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 1280px;
+  }
+`;
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  border: none;
+  background-image: linear-gradient(to top left, #ffb800, #9225ff);
+  backdrop-filter: blur(30px);
+  border-radius: 30px;
+  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
+
+  &:hover {
+  }
+
+  > nav {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans';
+      padding: 10px;
+      gap: 5px;
+    }
+
+    @media (min-width: 1280px) {
+    }
+  }
+`;
+
+export const Symbol = styled(NavLink)`
+  text-decoration: none;
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const Greeting = styled.div`
+  display: none;
+
+  @media (min-width: 1280px) {
+    font-family: 'Sansita Swashed';
+    font-size: 25px;
+    color: #fff;
+    max-width: 330px;
+    margin: 2px;
+    font-weight: 700;
+    display: inline-block;
+    &::first-letter {
+      font-size: 30px;
+    }
+  }
+`;
+
+
+
+export const Logo = styled.div`
+  font-weight: 700;
+  gap: 5px;
+  display: flex;
+  align-items: flex-end;
 `;
 
 export const Frame = styled.div`
@@ -12,14 +95,16 @@ export const Frame = styled.div`
  overflow: hidden;
 `;
 
-export const Icon = styled.svg`
-  fill: rgb(114, 17, 17);
-`;
 
 export const IconLabelWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+display:none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const IconLabelStart = styled.span`
@@ -38,54 +123,14 @@ export const IconLabelEnd = styled.span`
   color: #9225ff;
 `;
 
-export const Greeting = styled.div`
-  font-family: 'Sansita Swashed';
-  font-size: 25px;
-  color: #fff;
-  max-width:330px;
-  overflow:hidden;
-  margin: 2px;
-  display: inline-block;
-  font-weight: 700;
-  &::first-letter {
-    font-size: 30px;
+export const Burger = styled.div`
+  fill: #9225ff;
+  cursor: pointer;
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
-export const Header = styled.header`
-  width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 20px;
-  margin-bottom: 8px;
-  margin-top: 8px;
-  border: none;
-  background-image: linear-gradient(to top left, #ffb800, #9225ff);
-  backdrop-filter: blur(30px);
-  border-radius: 30px;
-  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
-
-  &:hover {
-  }
-
-  > nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Sans';
-    padding: 10px;
-    gap: 5px;
-  }
-`;
-
-export const Logo = styled.div`
-  font-weight: 700;
-  gap: 5px;
-  display: flex;
-  align-items: flex-end;
-`;
 
 export const Link = styled(NavLink)`
   padding: 8px 12px;
@@ -176,14 +221,4 @@ export const Button = styled.button`
   }
 `;
 
-export const Symbol = styled(NavLink)`
-  text-decoration: none;
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    transform: scale(1.1);
-    
-  }
-`;

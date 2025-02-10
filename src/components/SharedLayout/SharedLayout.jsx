@@ -11,17 +11,22 @@ import {
   Button,
   Greeting,
   IconLabelWrapper,
+  Burger
 } from './SharedLayout.styled';
 import { Suspense } from 'react';
 import { logOut } from '../../redux/AuthRedux/operations';
 import { useDispatch } from 'react-redux';
 import { useAuthHook } from '../../customHook/customHook';
 import logoImage from './Airboxify.png';
+import { useMediaQuery } from 'react-responsive';
+import svg from './icons.svg';
 
 
 export const SharedLayout = () => {
   const dispatch = useDispatch();
   const { user } = useAuthHook();
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   
   return (
     <Container>
@@ -46,7 +51,7 @@ export const SharedLayout = () => {
             justifyContent: 'center',
           }}
         >
-          <Greeting>Welcome,</Greeting> <Greeting>{user.firstname}</Greeting>
+         
         </div>
         <nav>
           <Link to="/sharedLayout/Home">Home</Link>
@@ -56,6 +61,11 @@ export const SharedLayout = () => {
             Logout
           </Button>
         </nav>
+        <Burger>
+          <svg width="60px" height="40px">
+            <use href={`${svg}#icon-burger`}></use>
+          </svg>
+        </Burger>
       </Header>
 
       <Suspense fallback={<div>Loading page...</div>}>

@@ -51,7 +51,7 @@ export const Home = () => {
               <i>
                 Here at Airboxify! We provide an all-in-one platform designed
                 to help your business streamline its operations.
-                From scheduling to data visualization, our
+                From scheduling appointments and events to data visualization, our
                 cloud-based SaaS solution simplifies your workflow, keeping your
                 business efficient and growing.
               </i>

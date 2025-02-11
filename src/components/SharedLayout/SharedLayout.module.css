@@ -81,6 +81,7 @@ fill: #D41443;
 stroke: #fff;
 }
 
+
 .headerWindowLinkContent{
     display: flex;
     align-items: center;
@@ -126,5 +127,20 @@ stroke: #fff;
 }
 
 .headerWindowNavLink:hover,.headerWindowNavLink:hover{
-    color:#D41443;
+    color:#280a46;;
+}
+
+.headerWindowNavButton{
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-weight: 700;
+    line-height: calc(18.23/14);
+    color:#fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.headerWindowNavButton:hover,.headerWindowNavButton:hover{
+    color:#280a46;;
 }

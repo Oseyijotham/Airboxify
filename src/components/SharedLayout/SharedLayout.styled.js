@@ -128,13 +128,16 @@ export const Burger = styled.button`
   cursor: pointer;
   border: none;
   background-color: transparent;
+  &:hover {
+    fill: #280a46;
+  }
   @media (min-width: 768px) {
     display: none;
   }
 `;
 
 
-export const Link = styled(NavLink)`
+export const Linker = styled(NavLink)`
   padding: 8px 12px;
   border-radius: 4px;
   text-decoration: none;

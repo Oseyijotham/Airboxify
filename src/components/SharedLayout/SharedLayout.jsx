@@ -3,7 +3,7 @@ import {
   Container,
   Header,
   Logo,
-  Link,
+  Linker,
   Frame,
   IconLabelStart,
   IconLabelEnd,
@@ -22,6 +22,7 @@ import { useMediaQuery } from 'react-responsive';
 import svg from './icons.svg';
 import clsx from 'clsx';
 import css from './SharedLayout.module.css';
+import { Link } from 'react-router-dom';
 
 
 export const SharedLayout = () => {
@@ -55,10 +56,10 @@ export const SharedLayout = () => {
           }}
         ></div>
         <nav>
-          <Link to="/sharedLayout/Home">Home</Link>
-          <Link to="/sharedLayout/tasks">Scheduler</Link>
-          <Link to="/sharedLayout/sorting">Sorting</Link>
-          <Link to="/sharedLayout/sorting">My Profile</Link>
+          <Linker to="/sharedLayout/Home">Home</Linker>
+          <Linker to="/sharedLayout/tasks">Scheduler</Linker>
+          <Linker to="/sharedLayout/sorting">Sorting</Linker>
+          <Linker to="/sharedLayout/sorting">My Profile</Linker>
           <Button type="button" onClick={() => dispatch(logOut())}>
             Logout
           </Button>
@@ -103,29 +104,45 @@ export const SharedLayout = () => {
             <nav className={css.headerWindowNav}>
               <ul className={css.headerWindowNavList}>
                 <li className={css.headerWindowNavItem}>
-                  <a href="#" className={css.headerWindowNavLink}>
+                  <Link
+                    to="/sharedLayout/Home"
+                    className={css.headerWindowNavLink}
+                    onClick={() => setMenuHide(true)}
+                  >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className={css.headerWindowNavItem}>
-                  <a href="#" className={css.headerWindowNavLink}>
+                  <Link
+                    to="/sharedLayout/tasks"
+                    className={css.headerWindowNavLink}
+                    onClick={() => setMenuHide(true)}
+                  >
                     Scheduler
-                  </a>
+                  </Link>
                 </li>
                 <li className={css.headerWindowNavItem}>
-                  <a href="#" className={css.headerWindowNavLink}>
+                  <Link
+                    to="/sharedLayout/sorting"
+                    className={css.headerWindowNavLink}
+                    onClick={() => setMenuHide(true)}
+                  >
                     Sorting
-                  </a>
+                  </Link>
                 </li>
                 <li className={css.headerWindowNavItem}>
-                  <a href="#" className={css.headerWindowNavLink}>
-                    My Profile
-                  </a>
+                  <Link
+                    to="/sharedLayout/sorting"
+                    className={css.headerWindowNavLink}
+                    onClick={() => setMenuHide(true)}
+                  >
+                    Sorting
+                  </Link>
                 </li>
                 <li className={css.headerWindowNavItem}>
                   <button
                     type="button"
-                    className={css.headerWindowNavLink}
+                    className={css.headerWindowNavButton}
                     onClick={() => dispatch(logOut())}
                   >
                     Logout

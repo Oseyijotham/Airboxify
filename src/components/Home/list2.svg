@@ -3,9 +3,9 @@
   <defs>
     <!-- Linear Gradient Definition -->
     <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="-32.31%" stop-color="#fe3737" />
-      <stop offset="63.97%" stop-color="#5785ff" />
-      <stop offset="191.94%" stop-color="#667eed" />
+      <stop offset="-32.31%" stop-color="#9225ff" />
+      <stop offset="63.97%" stop-color="#ffb800" />
+     
     </linearGradient>
     
     <!-- Clipping Path Definition -->

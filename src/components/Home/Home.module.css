@@ -1,5 +1,9 @@
 .homeDisplay{
   text-align: center;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 
@@ -183,11 +187,16 @@ border: 1px solid grey;
   text-align: center;
   justify-content: space-around;
   padding: 8px;
-  margin: 50px;
+  margin: 10px;
 }
 
 .homeIconWrapper{
-background: linear-gradient(270deg, rgba(254, 55, 55, 0.25) -32.31%, rgba(87, 133, 255, 0.25) 63.97%, rgba(102, 126, 237, 0.25) 191.94%);
+display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .homeIconWrapper{
+    background: linear-gradient(270deg, rgba(254, 55, 55, 0.25) -32.31%, rgba(87, 133, 255, 0.25) 63.97%, rgba(102, 126, 237, 0.25) 191.94%);
 padding: 10px;
 width: 80px;
 height:80px;
@@ -199,6 +208,8 @@ animation-name: scale;
   animation-duration: 3000ms;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  }
+
 }
 
 @keyframes scale {
@@ -217,13 +228,23 @@ animation-name: scale;
 
 .homeDisplayTitle{
 font-family: 'Inter', sans-serif;
-font-size: 36px;
+font-size: 26px;
 color: #fff;
 font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+}
+
+ @media screen and (min-width: 768px) {
+  .homeDisplayTitle{
+    font-size: 36px;
+  }
 }
 
 .homeDisplayTitlePart{
-background: linear-gradient(270deg, #fe3737 -32.31%, #5785ff 63.97%, #667eed 191.94%);
+background-image: linear-gradient(to top left, #ffb800, #9225ff);
 background-clip:text;
 color: transparent;
 font-weight: 900;
@@ -231,12 +252,20 @@ font-weight: 900;
 
 .homeDisplaySlogan{
   margin-top: 10px;
-  display:block;
+  display:none;
   text-align: center;
   font-weight: 400;
   color: #fff;
   font-family: 'Comic Sans MS';
-   text-shadow: 1px 1px 1px #000000; 
+  text-shadow: 1px 1px 1px #000000; 
+  width: 700px;
+}
+
+@media screen and (min-width: 768px) {
+  .homeDisplaySlogan{
+    display:block;
+  }
+
 }
 
 .homeIcon{

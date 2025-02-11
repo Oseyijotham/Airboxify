@@ -42,16 +42,16 @@ export const Home = () => {
           </div>
           <span>
             <span className={css.homeDisplayTitle}>
-              Welcome{' '}
+              Welcome,{' '}
               <span className={css.homeDisplayTitlePart}>
                 <i>{myUser.firstname}</i>
               </span>
             </span>
             <span className={css.homeDisplaySlogan}>
               <i>
-                Welcome to Airboxify! We provide an all-in-one platform designed
+                Here at Airboxify! We provide an all-in-one platform designed
                 to help your business streamline its operations.
-                From scheduling and invoicing to customer engagement, our
+                From scheduling to data visualization, our
                 cloud-based SaaS solution simplifies your workflow, keeping your
                 business efficient and growing.
               </i>
@@ -70,7 +70,7 @@ export const Home = () => {
       {error && <div>There was an error</div>}
 
       <div className={css.detailsSection}>
-        <h2 className={css.detailsSectionTitle}>YOUR DETAILS</h2>
+        <h2 className={css.detailsSectionTitle}>ADMIN DASHBOARD</h2>
         <div className={css.detailsImageWrapper}>
           <img
             className={css.detailsImage}

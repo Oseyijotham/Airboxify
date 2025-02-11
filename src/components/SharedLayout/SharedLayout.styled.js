@@ -123,9 +123,11 @@ export const IconLabelEnd = styled.span`
   color: #9225ff;
 `;
 
-export const Burger = styled.div`
+export const Burger = styled.button`
   fill: #9225ff;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
   @media (min-width: 768px) {
     display: none;
   }
@@ -150,12 +152,7 @@ export const Link = styled(NavLink)`
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(
-      270deg,
-      #fe3737 -32.31%,
-      #5785ff 63.97%,
-      #667eed 191.94%
-    );
+    background-color: #9225ff;
     transform: scaleX(0);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: left;

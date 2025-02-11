@@ -58,6 +58,7 @@ export const SharedLayout = () => {
           <Link to="/sharedLayout/Home">Home</Link>
           <Link to="/sharedLayout/tasks">Scheduler</Link>
           <Link to="/sharedLayout/sorting">Sorting</Link>
+          <Link to="/sharedLayout/sorting">My Profile</Link>
           <Button type="button" onClick={() => dispatch(logOut())}>
             Logout
           </Button>
@@ -118,8 +119,17 @@ export const SharedLayout = () => {
                 </li>
                 <li className={css.headerWindowNavItem}>
                   <a href="#" className={css.headerWindowNavLink}>
-                    Logout
+                    My Profile
                   </a>
+                </li>
+                <li className={css.headerWindowNavItem}>
+                  <button
+                    type="button"
+                    className={css.headerWindowNavLink}
+                    onClick={() => dispatch(logOut())}
+                  >
+                    Logout
+                  </button>
                 </li>
               </ul>
             </nav>

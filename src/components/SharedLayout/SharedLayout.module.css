@@ -57,46 +57,24 @@ fill: #fff;
 }
 
 
-.headerWindowLink {
-fill: #fff;
-stroke: #D41443;
+.headerWindowNameWrapper {
 border-radius: 22px;
-display: flex;
-align-items: center;
-justify-content: center;
+align-self: flex-start;
 font-family: "DM Sans";
-font-size: 16px;
+font-size: 19px;
 font-style: normal;
 font-weight: 700;
 line-height: calc(20.83/16);
-color: #D41443;
-background-color: #fff;
-margin-bottom: 19px;
-}
-
-.headerWindowLink:hover,.headerWindowLink:focus {
 color: #fff;
-background-color: #D41443;
-fill: #D41443;
-stroke: #fff;
+margin-bottom: 19px;
+padding: 20px;
+}
+
+.headerWindowName {
+
 }
 
 
-.headerWindowLinkContent{
-    display: flex;
-    align-items: center;
-    padding-left: 48.64px;
-    padding-right: 48.64px;
-}
-
-.headerWindowLabel{
-    width: 90.70px;
-    height: 44px;
-    margin-right: 15.77px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .headerWindowNav{
     align-self: self-start;

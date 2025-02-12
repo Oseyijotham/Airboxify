@@ -198,12 +198,7 @@ export const Button = styled.button`
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(
-      270deg,
-      #fe3737 -32.31%,
-      #5785ff 63.97%,
-      #667eed 191.94%
-    );
+    background-color: #9225ff;
     transform: scaleX(0);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: left;

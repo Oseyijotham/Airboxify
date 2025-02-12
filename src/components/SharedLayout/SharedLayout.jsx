@@ -92,14 +92,11 @@ export const SharedLayout = () => {
               </svg>
             </button>
 
-            <a className={css.headerWindowLink} href="#">
-              <span className={css.headerWindowLinkContent}>
-                <span className={css.headerWindowLabel}>Buy now</span>
-                <svg class="header-window__icon" width="5.26" height="8">
-                  <use href="./images/icons.svg#icon-Vector3"></use>
-                </svg>
+            <div className={css.headerWindowNameWrapper} href="#">
+              <span className={css.headerWindowName}>
+                {user.firstname}
               </span>
-            </a>
+            </div>
 
             <nav className={css.headerWindowNav}>
               <ul className={css.headerWindowNavList}>
@@ -136,7 +133,7 @@ export const SharedLayout = () => {
                     className={css.headerWindowNavLink}
                     onClick={() => setMenuHide(true)}
                   >
-                    Sorting
+                    My Profile
                   </Link>
                 </li>
                 <li className={css.headerWindowNavItem}>

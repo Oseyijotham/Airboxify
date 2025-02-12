@@ -12,6 +12,7 @@ import { updateAvatar } from '../../redux/AuthRedux/operations';
 import svg from '../SharedLayout/icons.svg';
 import icon from './list2.svg';
 import Scheduling from './SchedulerCorp.png';
+import Sorting from './SortingCorp.png';
 
 
 
@@ -108,6 +109,48 @@ export const Home = () => {
                 </div>
                 <span className={css.movieName}>
                   <span className={css.wardName}>Scheduling</span>
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className={css.frame}
+            onMouseEnter={() => {
+              setIsTwoHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsTwoHovered(false);
+            }}
+            style={{
+              transform: `
+    ${isOneHovered ? 'translateY(110%)' : 'translateY(0)'}
+    ${isThreeHovered ? 'translateX(25%)' : 'translateX(0)'}
+  `,
+            }}
+          >
+            <div
+              key="townLibrarian"
+              className={css.movieItem}
+              onClick={() => {
+                setIsTwoHovered(false);
+              }}
+            >
+              <Link to="/dog_ward" className={css.movieInfo}>
+                <div className={css.catOverlay}>
+                  <img
+                    className={css.movieImage}
+                    src={Sorting}
+                    alt="Sorting"
+                  />
+                  <p className={css.catWardDescription}>
+                    Welcome to Petpal's Dog Ward! Take our quick questionnaire
+                    to find the dog breeds that are just right for you and your
+                    family.
+                  </p>
+                </div>
+                <span className={css.movieName}>
+                  <span className={css.wardName}>Sorting</span>
                 </span>
               </Link>
             </div>

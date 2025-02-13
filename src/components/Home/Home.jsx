@@ -12,8 +12,12 @@ import { updateAvatar } from '../../redux/AuthRedux/operations';
 import svg from '../SharedLayout/icons.svg';
 import icon from './list2.svg';
 import Scheduling from './SchedulerCorper.jpg';
+import SchedulingDensity from './SchedulerCorper@2x.jpg';
 import Sorting from './SortingCorper.jpg';
-import DataVisualizing from './Data Visualization Corper.jpg';
+import SortingDensity from './SortingCorper@2x.jpg';
+import DataVisualization from './Data Visualization Corper.jpg';
+import DataVisualizationDensity from './Data Visualization Corper@2x.jpg';
+import { useMediaQuery } from 'react-responsive';
 
 
 
@@ -27,6 +31,8 @@ export const Home = () => {
   const [isOneHovered, setIsOneHovered] = useState(false);
   const [isTwoHovered, setIsTwoHovered] = useState(false);
   const [isThreeHovered, setIsThreeHovered] = useState(false);
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const handleImageChange = e => {
     //console.log("gbyghnu")
     const file = e.target.files[0];
@@ -71,7 +77,10 @@ export const Home = () => {
       </div>
 
       <div className={css.hero}>
-        <div className={css.offersLabel}>We offer</div>
+        <div className={css.offersLabelWrapper}>
+          <div className={css.offersLabel}>We offer</div>
+        </div>
+
         <div className={css.offersWrapper}>
           <div
             className={css.frame}
@@ -83,9 +92,16 @@ export const Home = () => {
             }}
             style={{
               transform: `
-    ${isTwoHovered ? 'translateY(110%)' : 'translateY(0)'}
-    ${isThreeHovered ? 'translateX(-25%)' : 'translateX(0)'}
+    ${isTwoHovered && isTablet ? 'translateY(110%)' : 'translateY(0)'}
+    ${isThreeHovered && isTablet ? 'translateX(-25%)' : 'translateX(0)'}
   `,
+              boxShadow: `
+              ${
+                isOneHovered
+                  ? 'inset 0 0 50px 30px #9225ff'
+                  : 'inset 0 0 10px 5px  #9225ff'
+              }
+              `,
             }}
           >
             <div
@@ -95,17 +111,20 @@ export const Home = () => {
                 setIsOneHovered(false);
               }}
             >
-              <Link to="/cat_ward" className={css.movieInfo}>
+              <Link to="/sharedLayout/tasks" className={css.movieInfo}>
                 <div className={css.catOverlay}>
                   <img
                     className={css.movieImage}
-                    src={Scheduling}
+                    srcSet={`${Scheduling} 1x, ${SchedulingDensity} 2x`}
+                    src={Scheduling} // Fallback
                     alt="Scheduling"
                   />
                   <p className={css.catWardDescription}>
-                    Welcome to Petpal's Cat Ward! Answer a few questions, and
-                    we'll match you with the perfect cat breeds that fit your
-                    lifestyle and preferences
+                    <span className={css.catWardDescriptionbackground}>
+                      Welcome to Petpal's Cat Ward! Answer a few questions, and
+                      we'll match you with the perfect cat breeds that fit your
+                      lifestyle and preferences
+                    </span>
                   </p>
                 </div>
                 <span className={css.movieName}>
@@ -125,9 +144,16 @@ export const Home = () => {
             }}
             style={{
               transform: `
-    ${isOneHovered ? 'translateY(110%)' : 'translateY(0)'}
-    ${isThreeHovered ? 'translateX(25%)' : 'translateX(0)'}
+    ${isOneHovered && isTablet ? 'translateY(110%)' : 'translateY(0)'}
+    ${isThreeHovered && isTablet ? 'translateX(25%)' : 'translateX(0)'}
   `,
+              boxShadow: `
+              ${
+                isTwoHovered
+                  ? 'inset 0 0 50px 30px #9225ff'
+                  : 'inset 0 0 10px 5px  #9225ff'
+              }
+              `,
             }}
           >
             <div
@@ -137,13 +163,20 @@ export const Home = () => {
                 setIsTwoHovered(false);
               }}
             >
-              <Link to="/dog_ward" className={css.movieInfo}>
+              <Link to="/sharedLayout/sorting" className={css.movieInfo}>
                 <div className={css.catOverlay}>
-                  <img className={css.movieImage} src={Sorting} alt="Sorting" />
+                  <img
+                    className={css.movieImage}
+                    srcSet={`${Sorting} 1x, ${SortingDensity} 2x`}
+                    src={Sorting} // Fallback
+                    alt="Sorting"
+                  />
                   <p className={css.catWardDescription}>
-                    Welcome to Petpal's Dog Ward! Take our quick questionnaire
-                    to find the dog breeds that are just right for you and your
-                    family.
+                    <span className={css.catWardDescriptionbackground}>
+                      Welcome to Petpal's Cat Ward! Answer a few questions, and
+                      we'll match you with the perfect cat breeds that fit your
+                      lifestyle and preferences
+                    </span>
                   </p>
                 </div>
                 <span className={css.movieName}>
@@ -162,11 +195,17 @@ export const Home = () => {
               setIsThreeHovered(false);
             }}
             style={{
-              transform:
-                `
-      ${isOneHovered ? 'translateX(-55%)' : 'translateX(0)'}
-      ${isTwoHovered ? 'translateX(55%)' : 'translateX(0)'}
+              transform: `
+      ${isOneHovered && isTablet ? 'translateX(-55%)' : 'translateX(0)'}
+      ${isTwoHovered && isTablet ? 'translateX(55%)' : 'translateX(0)'}
     `,
+              boxShadow: `
+              ${
+                isThreeHovered
+                  ? 'inset 0 0 50px 30px #9225ff'
+                  : 'inset 0 0 10px 5px  #9225ff'
+              }
+              `,
             }}
           >
             <div
@@ -180,13 +219,16 @@ export const Home = () => {
                 <div className={css.catOverlay}>
                   <img
                     className={css.movieImage}
-                    src={DataVisualizing}
-                    alt="DataVisualizing"
+                    srcSet={`${DataVisualization} 1x, ${DataVisualizationDensity} 2x`}
+                    src={DataVisualization} // Fallback
+                    alt="DataVisualization"
                   />
                   <p className={css.catWardDescription}>
-                    Welcome to Petpal's Dog Ward! Take our quick questionnaire
-                    to find the dog breeds that are just right for you and your
-                    family.
+                    <span className={css.catWardDescriptionbackground}>
+                      Welcome to Petpal's Cat Ward! Answer a few questions, and
+                      we'll match you with the perfect cat breeds that fit your
+                      lifestyle and preferences
+                    </span>
                   </p>
                 </div>
                 <span className={css.movieName}>

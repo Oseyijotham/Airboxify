@@ -31,7 +31,7 @@ export const Header = styled.header`
   background-image: linear-gradient(to top left, #ffb800, #9225ff);
   backdrop-filter: blur(30px);
   border-radius: 30px;
-  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0px 16px 24px #9225ff);
 
   &:hover {
   }

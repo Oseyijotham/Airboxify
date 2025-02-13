@@ -164,9 +164,9 @@ export const Home = () => {
             style={{
               transform:
                 `
-      ${isOneHovered ? 'translateX(-55%)' : ''}
-      ${isTwoHovered ? 'translateX(55%)' : ''}
-    `.trim() || 'translateX(0)',
+      ${isOneHovered ? 'translateX(-55%)' : 'translateX(0)'}
+      ${isTwoHovered ? 'translateX(55%)' : 'translateX(0)'}
+    `,
             }}
           >
             <div

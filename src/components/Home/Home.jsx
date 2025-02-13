@@ -11,8 +11,9 @@ import { selectUser } from '../../redux/AuthRedux/selectors';
 import { updateAvatar } from '../../redux/AuthRedux/operations';
 import svg from '../SharedLayout/icons.svg';
 import icon from './list2.svg';
-import Scheduling from './SchedulerCorp.png';
-import Sorting from './SortingCorp.png';
+import Scheduling from './SchedulerCorper.jpg';
+import Sorting from './SortingCorper.jpg';
+import DataVisualizing from './Data Visualization Corper.jpg';
 
 
 
@@ -138,11 +139,7 @@ export const Home = () => {
             >
               <Link to="/dog_ward" className={css.movieInfo}>
                 <div className={css.catOverlay}>
-                  <img
-                    className={css.movieImage}
-                    src={Sorting}
-                    alt="Sorting"
-                  />
+                  <img className={css.movieImage} src={Sorting} alt="Sorting" />
                   <p className={css.catWardDescription}>
                     Welcome to Petpal's Dog Ward! Take our quick questionnaire
                     to find the dog breeds that are just right for you and your
@@ -151,6 +148,49 @@ export const Home = () => {
                 </div>
                 <span className={css.movieName}>
                   <span className={css.wardName}>Sorting</span>
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className={css.frame}
+            onMouseEnter={() => {
+              setIsThreeHovered(true);
+            }}
+            onMouseLeave={() => {
+              setIsThreeHovered(false);
+            }}
+            style={{
+              transform:
+                `
+      ${isOneHovered ? 'translateX(-55%)' : ''}
+      ${isTwoHovered ? 'translateX(55%)' : ''}
+    `.trim() || 'translateX(0)',
+            }}
+          >
+            <div
+              key="townLibrarian"
+              className={css.movieItem}
+              onClick={() => {
+                setIsTwoHovered(false);
+              }}
+            >
+              <Link to="/dog_ward" className={css.movieInfo}>
+                <div className={css.catOverlay}>
+                  <img
+                    className={css.movieImage}
+                    src={DataVisualizing}
+                    alt="DataVisualizing"
+                  />
+                  <p className={css.catWardDescription}>
+                    Welcome to Petpal's Dog Ward! Take our quick questionnaire
+                    to find the dog breeds that are just right for you and your
+                    family.
+                  </p>
+                </div>
+                <span className={css.movieName}>
+                  <span className={css.wardName}>Data Visualization</span>
                 </span>
               </Link>
             </div>

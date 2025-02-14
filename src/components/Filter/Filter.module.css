@@ -2,12 +2,20 @@
    display: inline-block;
     font-weight: 700;
     font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
     color: #fff;
-    background-color: #01092D;
+    background-image: linear-gradient(to top left, #ffb800, #9225ff);
     border: 2px solid #fff;
     border-radius: 30px;
-    padding: 8px;
+    padding: 4px;
     margin-bottom: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .formLabel {
+    font-size: 16px;
+    padding: 7px;
+  }
 }
 
 .formInput {

@@ -92,8 +92,8 @@ export const Home = () => {
             }}
             style={{
               transform: `
-    ${isTwoHovered && isTablet ? 'translateY(110%)' : 'translateY(0)'}
-    ${isThreeHovered && isTablet ? 'translateX(-25%)' : 'translateX(0)'}
+    ${isTwoHovered && isTablet ? 'translateY(105%)' : 'translateY(0)'}
+    ${isThreeHovered && isTablet ? 'translateX(-30%)' : 'translateX(0)'}
   `,
               boxShadow: `
               ${
@@ -144,8 +144,8 @@ export const Home = () => {
             }}
             style={{
               transform: `
-    ${isOneHovered && isTablet ? 'translateY(110%)' : 'translateY(0)'}
-    ${isThreeHovered && isTablet ? 'translateX(25%)' : 'translateX(0)'}
+    ${isOneHovered && isTablet ? 'translateY(105%)' : 'translateY(0)'}
+    ${isThreeHovered && isTablet ? 'translateX(30%)' : 'translateX(0)'}
   `,
               boxShadow: `
               ${
@@ -196,8 +196,8 @@ export const Home = () => {
             }}
             style={{
               transform: `
-      ${isOneHovered && isTablet ? 'translateX(-55%)' : 'translateX(0)'}
-      ${isTwoHovered && isTablet ? 'translateX(55%)' : 'translateX(0)'}
+      ${isOneHovered && isTablet ? 'translateX(-52%)' : 'translateX(0)'}
+      ${isTwoHovered && isTablet ? 'translateX(52%)' : 'translateX(0)'}
     `,
               boxShadow: `
               ${

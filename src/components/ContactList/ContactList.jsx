@@ -109,7 +109,7 @@ export const ContactList = ({ children }) => {
 
   return (
     <div className={css.contactsSection}>
-      <h3 className={css.contactsTitle}>Task List</h3>
+      <h3 className={css.contactsTitle}>Appointments List</h3>
       {children}
       {filterValue === '' && contacts.length !== 0 && (
         <ul className={css.contactsList}>

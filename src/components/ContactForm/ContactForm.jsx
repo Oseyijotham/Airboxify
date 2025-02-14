@@ -71,10 +71,10 @@ export const ContactForm = ({ children }) => {
 
   return (
     <div className={css.taskBook}>
-      <h2 className={css.formTitle}>Taskbook</h2>
+      <h2 className={css.formTitle}>Scheduler</h2>
       <form onSubmit={handleSubmit} className={css.formSection}>
         <label className={css.loginLabel}>
-          <span className={css.formLabel}>Task title:</span>
+          <span className={css.formLabel}>Appointment title:</span>
           <input
             type="text"
             placeholder="Enter Task Title"

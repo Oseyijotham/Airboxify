@@ -62,7 +62,7 @@ export const Filter = () => {
   return (
     <div className={css.contactList}>
       <label htmlFor={searchTermId}>
-        <span className={css.formLabel}>Search Tasks By Title:</span>
+        <span className={css.formLabel}>Search Appointments By Title:</span>
         <input
           type="text"
           placeholder="Enter Task title"

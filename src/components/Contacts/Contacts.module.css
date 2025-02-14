@@ -119,6 +119,7 @@
 }
 
 .contactsDetailsHide{
+  display: none;
   text-align: center;
  background: linear-gradient(90deg, rgba(254, 55, 55, 0.25) -32.31%, rgba(87, 133, 255, 0.25) 63.97%, rgba(102, 126, 237, 0.25) 191.94%);
 position: absolute;
@@ -132,6 +133,13 @@ position: absolute;
     transition: transform 1250ms cubic-bezier(0.165, 0.84, 0.44, 1),
                 opacity 1250ms cubic-bezier(0.4, 0, 0.2, 1), 
                 visibility 1250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media screen and (min-width:768px){
+  .contactsDetailsHide{
+   display: block;
+  }
+
 }
 
 .contactsDetailsShow{

@@ -286,7 +286,13 @@ color: transparent;
   padding: 10px;
   border-radius: 30px;
   border:none;
+  width: 300px;
 }
+
+@media screen and (min-width:768px){
+.hero{
+  width: 100%;
+}}
 
 .offersLabel{
   font-family: 'DM Sans';

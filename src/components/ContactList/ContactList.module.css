@@ -121,10 +121,10 @@ background-image: linear-gradient(to top left, #ffb800, #9225ff);
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   cursor: pointer;
-    border: none;
     color: #fff;
     background-color: #9225ff;
     border: 1px solid #fff;
+    margin:2px;
 }
 
 .contactsButton:hover{

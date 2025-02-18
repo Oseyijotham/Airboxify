@@ -133,7 +133,7 @@ export const ContactForm = ({ children }) => {
             className={css.button}
             onClick={handleButtonPress}
           >
-            Add Task
+            Add
           </button>
         </div>
       </form>

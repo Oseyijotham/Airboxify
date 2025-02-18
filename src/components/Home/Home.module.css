@@ -288,7 +288,7 @@ color: transparent;
   border:none;
 }
 
-@media screen and (max-width:320px){
+@media screen and (max-width:767px){
 .hero{
   width: 300px;
 }}

@@ -6,6 +6,7 @@ import {
   selectContactsFilter,
   selectFilterUp,
   selectFilterDown,
+  
 } from '../../redux/AppRedux/selectors';
 import {
   deleteContact,
@@ -16,10 +17,12 @@ import {
   handleFilterBackwardUp,
   handleFilterBackwardDown,
   updateStatus,
+  openMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 import Notiflix from 'notiflix';
+import svg from '../SharedLayout/icons.svg';
 
 export const ContactList = ({ children }) => {
   const contacts = useSelector(selectContacts);
@@ -54,6 +57,7 @@ export const ContactList = ({ children }) => {
       //console.log(id);
       dispatch(fetchContactById(id));
       dispatch(openModal());
+      dispatch(openMobileAndTabModal());
     }
   };
   const [lowerLimit, setLowerLimit] = useState(0);
@@ -128,7 +132,7 @@ export const ContactList = ({ children }) => {
                       type="checkbox"
                       className={css.checkbox}
                       checked={contact.status}
-                      name={contact._id} 
+                      name={contact._id}
                       onChange={handleChange}
                     />
                     :{' '}
@@ -143,7 +147,9 @@ export const ContactList = ({ children }) => {
                       name={contact._id}
                       onClick={handleDelete}
                     >
-                      Delete
+                      <svg width="15px" height="15px">
+                        <use href={`${svg}#icon-bin`}></use>
+                      </svg>
                     </button>
                   </span>
                 </li>

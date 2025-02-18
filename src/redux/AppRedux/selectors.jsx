@@ -35,3 +35,5 @@ export const selectedIsSlideError = state => state.contacts.contacts.isSlideErro
 export const selectFilterUp = state => state.contacts.contacts.filterUpLimit;
 
 export const selectFilterDown = state => state.contacts.contacts.filterDownLimit;
+
+export const selectOpenMobileAndTabModal = state => state.contacts.contacts.openMyMobileAndTabModal;

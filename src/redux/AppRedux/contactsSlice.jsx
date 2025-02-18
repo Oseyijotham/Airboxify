@@ -44,6 +44,8 @@ import {
   updateSortedCompletedContactPhone,
   updateSortedPastDueContactPhone,
   updateStatus,
+  openMobileAndTabModal,
+  closeMobileAndTabModal,
 } from './operations';
 
 const handlePending = state => {
@@ -75,6 +77,7 @@ const contactsSlice = createSlice({
       isKeyLoading: false,
       error: null,
       openMyModal: false,
+      openMyMobileAndTabModal: true, 
       openMyAllModal: false,
       openMyPendingModal: false,
       openMyCompletedModal: false,
@@ -309,84 +312,166 @@ const contactsSlice = createSlice({
       })
       .addCase(updateContactAvatar.fulfilled, (state, action) => {
         state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
-        
-         if (state.contacts.selectedContact._id === state.contacts.selectedSortedAllContact._id){
-          state.contacts.selectedSortedAllContact.avatarURL = action.payload.avatarURL;
+
+        if (
+          state.contacts.selectedContact._id ===
+          state.contacts.selectedSortedAllContact._id
+        ) {
+          state.contacts.selectedSortedAllContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedPendingContact._id === state.contacts.selectedContact._id){
-          state.contacts.selectedSortedPendingContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedPendingContact._id ===
+          state.contacts.selectedContact._id
+        ) {
+          state.contacts.selectedSortedPendingContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedCompletedContact._id === state.contacts.selectedContact._id){
-          state.contacts.selectedSortedCompletedContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedCompletedContact._id ===
+          state.contacts.selectedContact._id
+        ) {
+          state.contacts.selectedSortedCompletedContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedPastDueContact._id === state.contacts.selectedContact._id){
-          state.contacts.selectedSortedPastDueContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedPastDueContact._id ===
+          state.contacts.selectedContact._id
+        ) {
+          state.contacts.selectedSortedPastDueContact.avatarURL =
+            action.payload.avatarURL;
         }
       })
       .addCase(updateSortedAllContactAvatar.fulfilled, (state, action) => {
-        state.contacts.selectedSortedAllContact.avatarURL = action.payload.avatarURL;
-        
-        if (state.contacts.selectedContact._id === state.contacts.selectedSortedAllContact._id){
+        state.contacts.selectedSortedAllContact.avatarURL =
+          action.payload.avatarURL;
+
+        if (
+          state.contacts.selectedContact._id ===
+          state.contacts.selectedSortedAllContact._id
+        ) {
           state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedPendingContact._id === state.contacts.selectedSortedAllContact._id){
-          state.contacts.selectedSortedPendingContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedPendingContact._id ===
+          state.contacts.selectedSortedAllContact._id
+        ) {
+          state.contacts.selectedSortedPendingContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedCompletedContact._id === state.contacts.selectedSortedAllContact._id){
-          state.contacts.selectedSortedCompletedContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedCompletedContact._id ===
+          state.contacts.selectedSortedAllContact._id
+        ) {
+          state.contacts.selectedSortedCompletedContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedPastDueContact._id === state.contacts.selectedSortedAllContact._id){
-          state.contacts.selectedSortedPastDueContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedPastDueContact._id ===
+          state.contacts.selectedSortedAllContact._id
+        ) {
+          state.contacts.selectedSortedPastDueContact.avatarURL =
+            action.payload.avatarURL;
         }
       })
-         .addCase(updateSortedPendingContactAvatar.fulfilled, (state, action) => {
-        state.contacts.selectedSortedPendingContact.avatarURL = action.payload.avatarURL;
-        
-        if (state.contacts.selectedContact._id === state.contacts.selectedSortedPendingContact._id){
+      .addCase(updateSortedPendingContactAvatar.fulfilled, (state, action) => {
+        state.contacts.selectedSortedPendingContact.avatarURL =
+          action.payload.avatarURL;
+
+        if (
+          state.contacts.selectedContact._id ===
+          state.contacts.selectedSortedPendingContact._id
+        ) {
           state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedAllContact._id === state.contacts.selectedSortedPendingContact._id){
-          state.contacts.selectedSortedPendingContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedAllContact._id ===
+          state.contacts.selectedSortedPendingContact._id
+        ) {
+          state.contacts.selectedSortedPendingContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedCompletedContact._id === state.contacts.selectedSortedPendingContact._id){
-          state.contacts.selectedSortedCompletedContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedCompletedContact._id ===
+          state.contacts.selectedSortedPendingContact._id
+        ) {
+          state.contacts.selectedSortedCompletedContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedPastDueContact._id === state.contacts.selectedSortedPendingContact._id){
-          state.contacts.selectedSortedPastDueContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedPastDueContact._id ===
+          state.contacts.selectedSortedPendingContact._id
+        ) {
+          state.contacts.selectedSortedPastDueContact.avatarURL =
+            action.payload.avatarURL;
         }
-         })
-       .addCase(updateSortedCompletedContactAvatar.fulfilled, (state, action) => {
-        state.contacts.selectedSortedCompletedContact.avatarURL = action.payload.avatarURL;
-        
-        if (state.contacts.selectedContact._id === state.contacts.selectedSortedPendingContact._id){
+      })
+      .addCase(
+        updateSortedCompletedContactAvatar.fulfilled,
+        (state, action) => {
+          state.contacts.selectedSortedCompletedContact.avatarURL =
+            action.payload.avatarURL;
+
+          if (
+            state.contacts.selectedContact._id ===
+            state.contacts.selectedSortedPendingContact._id
+          ) {
+            state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
+          }
+          if (
+            state.contacts.selectedSortedAllContact._id ===
+            state.contacts.selectedSortedPendingContact._id
+          ) {
+            state.contacts.selectedSortedPendingContact.avatarURL =
+              action.payload.avatarURL;
+          }
+          if (
+            state.contacts.selectedSortedCompletedContact._id ===
+            state.contacts.selectedSortedPendingContact._id
+          ) {
+            state.contacts.selectedSortedCompletedContact.avatarURL =
+              action.payload.avatarURL;
+          }
+          if (
+            state.contacts.selectedSortedPastDueContact._id ===
+            state.contacts.selectedSortedPendingContact._id
+          ) {
+            state.contacts.selectedSortedPastDueContact.avatarURL =
+              action.payload.avatarURL;
+          }
+        }
+      )
+      .addCase(updateSortedPastDueContactAvatar.fulfilled, (state, action) => {
+        state.contacts.selectedSortedPastDueContact.avatarURL =
+          action.payload.avatarURL;
+
+        if (
+          state.contacts.selectedContact._id ===
+          state.contacts.selectedSortedPastDueContact._id
+        ) {
           state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedAllContact._id === state.contacts.selectedSortedPendingContact._id){
-          state.contacts.selectedSortedPendingContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedAllContact._id ===
+          state.contacts.selectedSortedPastDueContact._id
+        ) {
+          state.contacts.selectedSortedAllContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedCompletedContact._id === state.contacts.selectedSortedPendingContact._id){
-          state.contacts.selectedSortedCompletedContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedPendingContact._id ===
+          state.contacts.selectedSortedPastDueContact._id
+        ) {
+          state.contacts.selectedSortedPendingContact.avatarURL =
+            action.payload.avatarURL;
         }
-         if (state.contacts.selectedSortedPastDueContact._id === state.contacts.selectedSortedPendingContact._id){
-          state.contacts.selectedSortedPastDueContact.avatarURL = action.payload.avatarURL;
+        if (
+          state.contacts.selectedSortedCompletedContact._id ===
+          state.contacts.selectedSortedPastDueContact._id
+        ) {
+          state.contacts.selectedSortedCompletedContact.avatarURL =
+            action.payload.avatarURL;
         }
-       })
-            .addCase(updateSortedPastDueContactAvatar.fulfilled, (state, action) => {
-        state.contacts.selectedSortedPastDueContact.avatarURL = action.payload.avatarURL;
-        
-        if (state.contacts.selectedContact._id === state.contacts.selectedSortedPastDueContact._id){
-          state.contacts.selectedContact.avatarURL = action.payload.avatarURL;
-        }
-         if (state.contacts.selectedSortedAllContact._id === state.contacts.selectedSortedPastDueContact._id){
-          state.contacts.selectedSortedAllContact.avatarURL = action.payload.avatarURL;
-              }
-        if (state.contacts.selectedSortedPendingContact._id === state.contacts.selectedSortedPastDueContact._id){
-          state.contacts.selectedSortedPendingContact.avatarURL = action.payload.avatarURL;
-        }
-         if (state.contacts.selectedSortedCompletedContact._id === state.contacts.selectedSortedPastDueContact._id){
-          state.contacts.selectedSortedCompletedContact.avatarURL = action.payload.avatarURL;
-        }
-        
       })
 
       .addCase(updateContactName.pending, handlePending)
@@ -899,7 +984,15 @@ const contactsSlice = createSlice({
         state.contacts.isLoading = false;
         //state.token = action.payload.token;
       })
-      .addCase(updateStatus.rejected, handleRejected);
+      .addCase(updateStatus.rejected, handleRejected)
+
+      .addCase(openMobileAndTabModal.fulfilled, (state, action) => {
+        state.contacts.openMyMobileAndTabModal = action.payload;
+      })
+    
+      .addCase(closeMobileAndTabModal.fulfilled, (state, action) => {
+        state.contacts.openMyMobileAndTabModal = action.payload;
+      })
   },
 });
 

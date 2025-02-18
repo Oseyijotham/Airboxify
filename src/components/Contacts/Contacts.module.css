@@ -271,6 +271,7 @@ position: absolute;
 
 .detailsWrapper{
  border: 1px solid hsla(0, 0%, 6%, 0.3);
+  width: 515px;
 }
 }
 
@@ -390,6 +391,12 @@ background: linear-gradient(270deg, #5785FF 34.42%, #030F3F 144.24%);
   font-weight: 700;
   font-size: 13px;
   width: 100%;
+}
+
+@media screen and (min-width:768px) {
+  .detailsValInput{
+     font-size: 16px;
+  }
 }
 
 .detailsDetailsValInput{

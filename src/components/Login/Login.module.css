@@ -44,7 +44,6 @@ color: #fff;
 
 .inputButton:hover{
   background-image: linear-gradient(to bottom right, #9225ff, #ffb800);
-  background-position: 100% 0; /* Shifts the gradient position */
 }
 
 

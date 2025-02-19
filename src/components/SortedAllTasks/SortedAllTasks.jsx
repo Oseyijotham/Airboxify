@@ -26,6 +26,7 @@ import Notiflix from 'notiflix';
 import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/material_blue.css';
 import { Suspense } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 export const Contacts = () => {
    const [date, setDate] = useState(new Date());
@@ -43,6 +44,8 @@ export const Contacts = () => {
   const isSlideLoading = useSelector(selectedIsSlideLoading);
  
   const error = useSelector(selectError);
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const isMobileOrTab = useMediaQuery({ query: '(max-width: 1279px)' });
    const isOpenModal = useSelector(selectOpenSortedAllModal);
  const handleModalClose = () => {
    dispatch(closeSortedAllModal());

@@ -18,6 +18,7 @@ import {
   handleFilterBackwardUp,
   handleFilterBackwardDown,
   updateStatus,
+  openAllMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import css from './TasksAllList.module.css';
 export const TasksAllList = ({ children }) => {
@@ -55,6 +56,7 @@ export const TasksAllList = ({ children }) => {
       //console.log(id);
       dispatch(fetchSortedAllContactById(id));
       dispatch(openSortedAllModal());
+      dispatch(openAllMobileAndTabModal());
     }
   };
   const [lowerLimit, setLowerLimit] = useState(0);
@@ -110,7 +112,7 @@ export const TasksAllList = ({ children }) => {
 
   return (
     <div className={css.contactsSection}>
-      <h3 className={css.contactsTitle}>All Tasks</h3>
+      <h3 className={css.contactsTitle}>All Appointments</h3>
       {children}
       {contacts.length === 0 && (
         <div className={css.contactsListAlt}>

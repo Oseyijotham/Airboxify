@@ -9,7 +9,6 @@ export const Container = styled.div`
 
 
 export const Header = styled.header`
-  width: 632px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,13 +17,8 @@ export const Header = styled.header`
   margin-top: 8px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: linear-gradient(
-    270deg,
-    rgba(254, 55, 55, 0.25) -32.31%,
-    rgba(87, 133, 255, 0.25) 63.97%,
-    rgba(102, 126, 237, 0.25) 191.94%
-  );
+  border: none;
+  background-image: linear-gradient(to top left, #ffb800, #9225ff);
   backdrop-filter: blur(30px);
   border-radius: 30px;
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.3));
@@ -32,6 +26,16 @@ export const Header = styled.header`
   &:hover {
   }
 
+  @media (max-width: 767px) {
+    flex-direction: column;
+    font-size: 13px;
+    gap: 5px;
+    width: 150px;
+  }
+
+  @media (min-width: 768px) {
+    width: 632px;
+  }
 `;
 
 
@@ -54,12 +58,7 @@ export const Link = styled(NavLink)`
     width: 100%;
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(
-      270deg,
-      #fe3737 -32.31%,
-      #5785ff 63.97%,
-      #667eed 191.94%
-    );
+    background-color: #9225ff;
     transform: scaleX(0);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: left;

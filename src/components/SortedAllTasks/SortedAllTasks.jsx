@@ -8,6 +8,7 @@ import {
   updateSortedAllContactName,
   updateSortedAllContactEmail,
   updateSortedAllContactPhone,
+  closeAllMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
@@ -17,6 +18,7 @@ import {
   selectOpenSortedAllModal,
   selectedSortedAllContact,
   selectedIsSlideLoading,
+  selectOpenAllMobileAndTabModal,
 } from '../../redux/AppRedux/selectors';
 import css from './SortedAllTasks.module.css';
 import svg from './icons.svg';
@@ -40,6 +42,7 @@ export const Contacts = () => {
   //const [idValue, setIdValue] = useState('');
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const isOpenAllMobileAndTabModal = useSelector(selectOpenAllMobileAndTabModal);
   //const contacts = useSelector(selectContacts);
   const isSlideLoading = useSelector(selectedIsSlideLoading);
  
@@ -51,6 +54,7 @@ export const Contacts = () => {
    dispatch(closeSortedAllModal());
    setNameEdit(false);
    setEmailEdit(false);
+   dispatch(closeAllMobileAndTabModal());
   };
 
   const handleNameChange = evt => { 
@@ -238,9 +242,230 @@ export const Contacts = () => {
   return (
     <div
       className={clsx(css.coverWrapper, {
-        [css.contactsWrapperSpace]: isOpenModal,
+        [css.contactsWrapperSpace]: isOpenModal && isDesktop,
       })}
     >
+      {isOpenModal && isMobileOrTab && (
+        <div
+          className={clsx(css.backdrop, {
+            [css.backdropIsHidden]: isOpenAllMobileAndTabModal,
+          })}
+        >
+          <div className={css.modalWindow}>
+            {isSlideLoading && (
+              <div className={css.backDrop}>
+                <ThreeCircles
+                  visible={true}
+                  height="80"
+                  width="80"
+                  color="#9225ff"
+                  radius="9"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClass={css.loader}
+                />
+              </div>
+            )}
+            <button className={css.closeModal} onClick={handleModalClose}>
+              <svg width="10px" height="10px" className={css.modalIcon}>
+                <use href={`${svg}#icon-cross`}></use>
+              </svg>
+            </button>
+            <div className={css.detailsImageWrapper}>
+              <img
+                className={css.detailsImage}
+                src={`https://oasis-tasks-backend.onrender.com${myContact.avatarURL}`}
+                alt="Contact"
+              />
+            </div>
+            <input
+              className={css.detailsImageButton}
+              type="file"
+              accept="image/*"
+              name="avatar"
+              onChange={handleImageChange}
+              id="2"
+              data-id={myContact._id}
+            />
+            <label className={css.detailsImageInput} htmlFor="2">
+              Update Task Image +
+            </label>
+            <ul className={css.detailsWrapper}>
+              <li className={css.detailsItem}>
+                <span className={css.detailsCover}>
+                  <span className={css.detailsInfo}>
+                    <span className={css.details}>Task Title:</span>{' '}
+                    {isNameEditing === false ? (
+                      <span className={css.detailsVal}>
+                        <i className={css.detail}>{myContact.name}</i>
+                      </span>
+                    ) : (
+                      <input
+                        type="text"
+                        className={css.detailsValInput}
+                        required
+                        onChange={handleNameChange}
+                        data-id={myContact._id}
+                        name="username"
+                        defaultValue={myContact.name}
+                      />
+                    )}
+                  </span>
+                  <span className={css.buttonWrapper}>
+                    {isNameEditing === true && (
+                      <button
+                        className={css.detailsEditClose}
+                        onClick={handleNameEditClose}
+                      >
+                        <svg width="5px" height="5px" className={css.modalIcon}>
+                          <use href={`${svg}#icon-cross`}></use>
+                        </svg>
+                      </button>
+                    )}
+                    {isNameEditing === false ? (
+                      <button
+                        className={css.detailButton}
+                        onClick={handleNameEdit}
+                      >
+                        Edit
+                      </button>
+                    ) : (
+                      <button
+                        name={myContact._id}
+                        className={css.detailButton}
+                        onClick={handleNameSave}
+                      >
+                        Save
+                      </button>
+                    )}
+                  </span>
+                </span>
+              </li>
+              <li className={css.detailsItem}>
+                <span className={css.detailsCover}>
+                  <span className={css.detailsInfo}>
+                    <span className={css.details}>Task Details:</span>{' '}
+                    {isEmailEditing === false ? (
+                      <pre className={css.detailsDetailsVal}>
+                        <i className={css.detail}>{myContact.email}</i>
+                        {console.log(myContact.email)}
+                      </pre>
+                    ) : (
+                      <textarea
+                        type="text"
+                        className={css.detailsDetailsValInput}
+                        required
+                        onChange={handleEmailChange}
+                        data-id={myContact._id}
+                        name="email"
+                        title="Enter the details of your task"
+                        defaultValue={myContact.email}
+                      ></textarea>
+                    )}
+                  </span>
+                  <span className={css.buttonWrapper}>
+                    {isEmailEditing === true && (
+                      <button
+                        className={css.detailsEditClose}
+                        onClick={handleEmailEditClose}
+                      >
+                        <svg width="5px" height="5px" className={css.modalIcon}>
+                          <use href={`${svg}#icon-cross`}></use>
+                        </svg>
+                      </button>
+                    )}
+                    {isEmailEditing === false ? (
+                      <button
+                        className={css.detailButton}
+                        onClick={handleEmailEdit}
+                      >
+                        Edit
+                      </button>
+                    ) : (
+                      <button
+                        name={myContact._id}
+                        className={css.detailButton}
+                        onClick={handleEmailSave}
+                      >
+                        Save
+                      </button>
+                    )}
+                  </span>
+                </span>
+              </li>
+              <li className={css.detailsItem}>
+                <span className={css.detailsCover}>
+                  <span className={css.detailsInfo}>
+                    <span className={css.details}>Due Date:</span>{' '}
+                    {isPhoneEditing === false ? (
+                      <span className={css.detailsValPhone}>
+                        <i className={css.detail}>{dateValue}</i>
+                      </span>
+                    ) : (
+                      <Flatpickr
+                        data-enable-time
+                        value={date}
+                        onChange={selectedDates => {
+                          const nowDate = new Date();
+                          if (selectedDates[0] <= nowDate) {
+                            Notiflix.Notify.warning(
+                              'Choose a date in the future'
+                            );
+                          } else {
+                            Notiflix.Notify.success('Due Date Selected');
+                          }
+                          setDate(selectedDates[0]);
+                        }}
+                        options={{
+                          minuteIncrement: 1, // Set minute increments to 1
+                        }}
+                        render={({ defaultValue, ...props }, ref) => (
+                          <input
+                            {...props}
+                            ref={ref}
+                            className={css.detailsValInputPhone}
+                            required
+                            data-id={myContact._id}
+                            name="date"
+                          />
+                        )}
+                      />
+                    )}
+                  </span>
+                  <span className={css.buttonWrapper}>
+                    {isPhoneEditing === true && (
+                      <button
+                        className={css.detailsEditClose}
+                        onClick={handlePhoneEditClose}
+                      >
+                        <svg width="5px" height="5px" className={css.modalIcon}>
+                          <use href={`${svg}#icon-cross`}></use>
+                        </svg>
+                      </button>
+                    )}
+                    {isPhoneEditing === false ? (
+                      <button
+                        className={css.detailButton}
+                        onClick={handlePhoneEdit}
+                      >
+                        Edit
+                      </button>
+                    ) : (
+                      <button
+                        name={myContact._id}
+                        className={css.detailButton}
+                        onClick={handlePhoneSave}
+                      >
+                        Save
+                      </button>
+                    )}
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
       <b
         className={clsx(css.notification, {
           [css.notificationShow]: isLoading && !error,
@@ -256,7 +481,7 @@ export const Contacts = () => {
       )}
       <div
         className={clsx(css.contactsDetailsHide, {
-          [css.contactsDetailsShow]: isOpenModal,
+          [css.contactsDetailsShow]: isOpenModal && isDesktop,
         })}
       >
         {isSlideLoading && (
@@ -468,7 +693,7 @@ export const Contacts = () => {
       </div>
       <div
         className={clsx(css.sortedWrapper, {
-          [css.selected]: isOpenModal,
+          [css.selected]: isOpenModal && isDesktop,
         })}
       >
         <div></div>

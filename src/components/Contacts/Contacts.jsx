@@ -47,7 +47,6 @@ export const Contacts = () => {
 
   //const contacts = useSelector(selectContacts);
   const isSlideLoading = useSelector(selectedIsSlideLoading);
-  const [isMobileOrTabModalHidden, setMobileOrTabModal] = useState(true);
  
  
   const error = useSelector(selectError);

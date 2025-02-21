@@ -50,6 +50,8 @@ import {
   closeAllMobileAndTabModal,
   openPendingMobileAndTabModal,
   closePendingMobileAndTabModal,
+  openCompletedMobileAndTabModal,
+  closeCompletedMobileAndTabModal,
 } from './operations';
 
 const handlePending = state => {
@@ -84,6 +86,7 @@ const contactsSlice = createSlice({
       openMyMobileAndTabModal: true,
       openMyAllMobileAndTabModal: true,
       openMyPendingMobileAndTabModal: true,
+      openMyCompletedMobileAndTabModal: true,
       openMyAllModal: false,
       openMyPendingModal: false,
       openMyCompletedModal: false,
@@ -1014,6 +1017,14 @@ const contactsSlice = createSlice({
 
       .addCase(closePendingMobileAndTabModal.fulfilled, (state, action) => {
         state.contacts.openMyPendingMobileAndTabModal = action.payload;
+      })
+
+      .addCase(openCompletedMobileAndTabModal.fulfilled, (state, action) => {
+        state.contacts.openMyCompletedMobileAndTabModal = action.payload;
+      })
+
+      .addCase(closeCompletedMobileAndTabModal.fulfilled, (state, action) => {
+        state.contacts.openMyCompletedMobileAndTabModal = action.payload;
       });
   },
 });

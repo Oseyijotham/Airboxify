@@ -6,7 +6,8 @@ import {
   selectContactsFilter,
   selectFilterUp,
   selectFilterDown,
-  
+  selectError,
+  selectIsLoading,
 } from '../../redux/AppRedux/selectors';
 import {
   deleteContact,
@@ -28,6 +29,8 @@ export const ContactList = ({ children }) => {
   const contacts = useSelector(selectContacts);
   const filterUp = useSelector(selectFilterUp);
   const filterDown = useSelector(selectFilterDown);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const [taskStatus, setTaskStatus] = useState();
   //let myContacts  
   const dispatch = useDispatch();
@@ -147,9 +150,7 @@ export const ContactList = ({ children }) => {
                       name={contact._id}
                       onClick={handleDelete}
                     >
-                      <svg width="15px" height="15px">
-                        <use href={`${svg}#icon-bin`}></use>
-                      </svg>
+                      Delete
                     </button>
                   </span>
                 </li>
@@ -157,6 +158,17 @@ export const ContactList = ({ children }) => {
             }
           })}
         </ul>
+      )}
+      {contacts.length === 0 && (
+        <div className={css.contactsListAlt}>
+          {isLoading && !error && (
+            <b className={css.notification}>Loading Tasks...</b>
+          )}
+          {!isLoading && !error && (
+            <b className={css.notification}>No Tasks Here!!!</b>
+          )}
+          {!isLoading && error && <b className={css.notification}>Error!!!</b>}
+        </div>
       )}
       {filterValue === '' && (
         <div className={css.navigationArea}>

@@ -41,3 +41,5 @@ export const selectOpenMobileAndTabModal = state => state.contacts.contacts.open
 export const selectOpenAllMobileAndTabModal = state => state.contacts.contacts.openMyAllMobileAndTabModal;
 
 export const selectOpenPendingMobileAndTabModal = state => state.contacts.contacts.openMyPendingMobileAndTabModal;
+
+export const selectOpenCompletedMobileAndTabModal = state => state.contacts.contacts.openMyCompletedMobileAndTabModal;

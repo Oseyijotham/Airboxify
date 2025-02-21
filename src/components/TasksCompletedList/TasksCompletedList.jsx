@@ -18,6 +18,7 @@ import {
   handleFilterBackwardUp,
   handleFilterBackwardDown,
   updateStatus,
+  openCompletedMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import css from './TasksCompletedList.module.css';
 export const TasksCompletedList = ({ children }) => {
@@ -55,6 +56,7 @@ export const TasksCompletedList = ({ children }) => {
       //console.log(id);
       dispatch(fetchSortedCompletedContactById(id));
       dispatch(openSortedCompletedModal());
+      dispatch(openCompletedMobileAndTabModal());
     }
   };
   const [lowerLimit, setLowerLimit] = useState(0);

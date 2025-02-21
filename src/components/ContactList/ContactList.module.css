@@ -20,10 +20,16 @@
 .contactsTitle {
     text-align: center;
     font-weight: 700;
-    font-size: 23px;
+    font-size: 20px;
     color: #fff;
     font-family: 'Inter', sans-serif;
     text-shadow: 3px 3px 20px rgb(114, 17, 17), 5px 5px 5px #000000;
+}
+
+@media screen and (min-width:768px){
+.contactsTitle {
+  font-size: 32px;
+}
 }
 
 .contactsList {
@@ -165,4 +171,17 @@ background-color: #ffb800;
 
 .navigationButton:hover{
 background-image: linear-gradient(to top left, #ffb800, #9225ff);
+}
+
+.contactsListAlt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #280a46;
+  box-shadow: inset 0 0 10px 5px #9225ff;
+  border: 3px solid #ffb800;
+  border-radius: 30px;
+  padding: 10px;
+  height: 200px;
+  color: #fff;
 }

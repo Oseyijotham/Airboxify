@@ -2,6 +2,20 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+export const openCompletedMobileAndTabModal = createAsyncThunk(
+  'completedMobileAndTabModal/open',
+  async (_, thunkAPI) => {
+    return false;
+  }
+);
+
+export const closeCompletedMobileAndTabModal = createAsyncThunk(
+  'completedMobileAndTabModal/close',
+  async (_, thunkAPI) => {
+    return true;
+  }
+);
+
 export const openPendingMobileAndTabModal = createAsyncThunk(
   'pendingMobileAndTabModal/open',
   async (_, thunkAPI) => {

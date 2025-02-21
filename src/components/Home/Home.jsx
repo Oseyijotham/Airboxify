@@ -69,6 +69,9 @@ export const Home = () => {
                 efficient and growing.
               </i>
             </span>
+            <span className={css.homeDisplaySloganMobile}>
+              <i>Stylishly streamline your businesses operations</i>
+            </span>
           </span>
           <div className={css.homeIconWrapper}>
             <img src={icon} alt="icon" className={css.homeIcon} />

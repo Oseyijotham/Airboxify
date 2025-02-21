@@ -112,7 +112,7 @@ export const TasksAllList = ({ children }) => {
 
   return (
     <div className={css.contactsSection}>
-      <h3 className={css.contactsTitle}>All Appointments</h3>
+      <h3 className={css.contactsTitle}>All</h3>
       {children}
       {contacts.length === 0 && (
         <div className={css.contactsListAlt}>

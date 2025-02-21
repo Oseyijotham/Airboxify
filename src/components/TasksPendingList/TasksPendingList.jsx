@@ -18,6 +18,7 @@ import {
   handleFilterBackwardUp,
   handleFilterBackwardDown,
   updateStatus,
+  openPendingMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import css from './TasksPendingList.module.css';
 export const TasksPendingList = ({ children }) => {
@@ -55,6 +56,7 @@ export const TasksPendingList = ({ children }) => {
       //console.log(id);
       dispatch(fetchSortedPendingContactById(id));
       dispatch(openSortedPendingModal());
+       dispatch(openPendingMobileAndTabModal());
     }
   };
   const [lowerLimit, setLowerLimit] = useState(0);
@@ -115,7 +117,7 @@ export const TasksPendingList = ({ children }) => {
 
   return (
     <div className={css.contactsSection}>
-      <h3 className={css.contactsTitle}>Pending Tasks</h3>
+      <h3 className={css.contactsTitle}>Pending</h3>
       {children}
       {pendingMatches.length === 0 && (
         <div className={css.contactsListAlt}>

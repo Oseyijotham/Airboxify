@@ -39,3 +39,5 @@ export const selectFilterDown = state => state.contacts.contacts.filterDownLimit
 export const selectOpenMobileAndTabModal = state => state.contacts.contacts.openMyMobileAndTabModal;
 
 export const selectOpenAllMobileAndTabModal = state => state.contacts.contacts.openMyAllMobileAndTabModal;
+
+export const selectOpenPendingMobileAndTabModal = state => state.contacts.contacts.openMyPendingMobileAndTabModal;

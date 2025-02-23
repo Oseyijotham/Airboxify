@@ -14,7 +14,7 @@ import {
   openModal,
   fetchContactById
 } from '../../redux/AppRedux/operations';
-import svg from '../SharedLayout/icons.svg';
+//import svg from '../SharedLayout/icons.svg';
 
 export const Filter = () => {
   const searchTermId = nanoid();
@@ -104,9 +104,7 @@ export const Filter = () => {
                       name={contact._id}
                       onClick={handleDelete}
                     >
-                      <svg width="15px" height="15px">
-                        <use href={`${svg}#icon-bin`}></use>
-                      </svg>
+                    Delete
                     </button>
                   </span>
                 </li>

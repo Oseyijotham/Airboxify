@@ -74,7 +74,7 @@ export const ContactForm = ({ children }) => {
       <h2 className={css.formTitle}>Scheduler</h2>
       <form onSubmit={handleSubmit} className={css.formSection}>
         <label className={css.loginLabel}>
-          <span className={css.formLabel}>Appointment title:</span>
+          <span className={css.formLabel}>Customer Name:</span>
           <input
             type="text"
             placeholder="Enter Task Title"

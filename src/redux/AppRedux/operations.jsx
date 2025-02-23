@@ -2,69 +2,85 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+
+export const openPastDueMobileAndTabModal = createAsyncThunk(
+  'pastDueMobileAndTabModal/open',
+  async () => {
+    return false;
+  }
+);
+
+export const closePastDueMobileAndTabModal = createAsyncThunk(
+  'pastDueMobileAndTabModal/close',
+  async () => {
+    return true;
+  }
+);
+
+
 export const openCompletedMobileAndTabModal = createAsyncThunk(
   'completedMobileAndTabModal/open',
-  async (_, thunkAPI) => {
+  async () => {
     return false;
   }
 );
 
 export const closeCompletedMobileAndTabModal = createAsyncThunk(
   'completedMobileAndTabModal/close',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const openPendingMobileAndTabModal = createAsyncThunk(
   'pendingMobileAndTabModal/open',
-  async (_, thunkAPI) => {
+  async () => {
     return false;
   }
 );
 
 export const closePendingMobileAndTabModal = createAsyncThunk(
   'pendingMobileAndTabModal/close',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const openAllMobileAndTabModal = createAsyncThunk(
   'allMobileAndTabModal/open',
-  async (_, thunkAPI) => {
+  async () => {
     return false;
   }
 );
 
 export const closeAllMobileAndTabModal = createAsyncThunk(
   'allMobileAndTabModal/close',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const openMobileAndTabModal = createAsyncThunk(
   'mobileAndTabModal/open',
-  async (_, thunkAPI) => {
+  async () => {
     return false;
   }
 );
 
 export const closeMobileAndTabModal = createAsyncThunk(
   'mobileAndTabModal/close',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
-export const openModal = createAsyncThunk('modalAndTabModal/open', async (_, thunkAPI) => {
+export const openModal = createAsyncThunk('modalAndTabModal/open', async () => {
   return true;
 });
 
 export const closeModal = createAsyncThunk(
   'modal/close',
-  async (_, thunkAPI) => {
+  async () => {
     //console.log("Now");
     return false;
   }
@@ -72,14 +88,14 @@ export const closeModal = createAsyncThunk(
 
 export const openSortedAllModal = createAsyncThunk(
   'modal/openAll',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const closeSortedAllModal = createAsyncThunk(
   'modal/closeAll',
-  async (_, thunkAPI) => {
+  async () => {
     //console.log("Now");
     return false;
   }
@@ -87,14 +103,14 @@ export const closeSortedAllModal = createAsyncThunk(
 
 export const openSortedPendingModal = createAsyncThunk(
   'modal/openPending',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const closeSortedPendingModal = createAsyncThunk(
   'modal/closePending',
-  async (_, thunkAPI) => {
+  async () => {
     //console.log("Now");
     return false;
   }
@@ -102,14 +118,14 @@ export const closeSortedPendingModal = createAsyncThunk(
 
 export const openSortedCompletedModal = createAsyncThunk(
   'modal/openCompleted',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const closeSortedCompletedModal = createAsyncThunk(
   'modal/closeCompleted',
-  async (_, thunkAPI) => {
+  async () => {
     //console.log("Now");
     return false;
   }
@@ -117,14 +133,14 @@ export const closeSortedCompletedModal = createAsyncThunk(
 
 export const openSortedPastDueModal = createAsyncThunk(
   'modal/openPastDue',
-  async (_, thunkAPI) => {
+  async () => {
     return true;
   }
 );
 
 export const closeSortedPastDueModal = createAsyncThunk(
   'modal/closePastDue',
-  async (_, thunkAPI) => {
+  async () => {
     //console.log("Now");
     return false;
   }
@@ -132,14 +148,14 @@ export const closeSortedPastDueModal = createAsyncThunk(
 
 export const handleFilterFowardUp = createAsyncThunk(
   'filter/fowardUp',
-  async (val, thunkAPI) => {
+  async (val) => {
     return val + 4;
   }
 );
 
 export const handleFilterFowardDown = createAsyncThunk(
   'filter/fowardDown',
-  async (val, thunkAPI) => {
+  async (val) => {
     return val + 4;
   }
 );
@@ -147,14 +163,14 @@ export const handleFilterFowardDown = createAsyncThunk(
 
 export const handleFilterBackwardUp = createAsyncThunk(
   'filter/backwardUp',
-  async (val, thunkAPI) => {
+  async (val) => {
     return val - 4;
   }
 );
 
 export const handleFilterBackwardDown = createAsyncThunk(
   'filter/backwardDown',
-  async (val, thunkAPI) => {
+  async (val) => {
     return val - 4;
   }
 );
@@ -162,8 +178,8 @@ export const handleFilterBackwardDown = createAsyncThunk(
 export const updateContactAvatar = createAsyncThunk(
   'contacts/updateContactAvatar',
   async ({myFile, myId}, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Image...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Image...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -181,8 +197,8 @@ export const updateContactAvatar = createAsyncThunk(
 export const updateSortedAllContactAvatar = createAsyncThunk(
   'contacts/updateSortedAllContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Image...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Image...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -204,8 +220,8 @@ export const updateSortedAllContactAvatar = createAsyncThunk(
 export const updateSortedPendingContactAvatar = createAsyncThunk(
   'contacts/updateSortedPendingContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Image...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Image...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -227,8 +243,8 @@ export const updateSortedPendingContactAvatar = createAsyncThunk(
 export const updateSortedCompletedContactAvatar = createAsyncThunk(
   'contacts/updateSortedCompletedContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Image...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Image...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -250,8 +266,8 @@ export const updateSortedCompletedContactAvatar = createAsyncThunk(
 export const updateSortedPastDueContactAvatar = createAsyncThunk(
   'contacts/updateSortedPastdueContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Image...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Image...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -274,8 +290,8 @@ export const updateSortedPastDueContactAvatar = createAsyncThunk(
 export const updateContactName = createAsyncThunk(
   'contacts/updateContactName',
   async ({ name, myUpdateId}, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Title...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Title...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -305,8 +321,8 @@ export const updateContactName = createAsyncThunk(
 export const updateSortedAllContactName = createAsyncThunk(
   'contacts/updateSortedAllContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Title...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updatin Appointment Title...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -333,8 +349,8 @@ export const updateSortedAllContactName = createAsyncThunk(
 export const updateSortedPendingContactName = createAsyncThunk(
   'contacts/updateSortedPendingContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Title...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Title...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -361,8 +377,8 @@ export const updateSortedPendingContactName = createAsyncThunk(
 export const updateSortedCompletedContactName = createAsyncThunk(
   'contacts/updateSortedCompletedContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Title...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Title...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -389,8 +405,8 @@ export const updateSortedCompletedContactName = createAsyncThunk(
 export const updateSortedPastDueContactName = createAsyncThunk(
   'contacts/updateSortedPastDueContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Title...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Title...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -418,8 +434,8 @@ export const updateSortedPastDueContactName = createAsyncThunk(
 export const updateContactEmail = createAsyncThunk(
   'contacts/updateContactEmail',
   async ({ email, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Details...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Details...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -446,8 +462,8 @@ export const updateContactEmail = createAsyncThunk(
 export const updateSortedAllContactEmail = createAsyncThunk(
   'contacts/updateSortedAllContactEmail',
   async ({ email, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Details...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Details...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -474,8 +490,8 @@ export const updateSortedAllContactEmail = createAsyncThunk(
 export const updateSortedPendingContactEmail = createAsyncThunk(
   'contacts/updateSortedPendingContactEmail',
   async ({ email, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Details...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Details...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -502,8 +518,8 @@ export const updateSortedPendingContactEmail = createAsyncThunk(
 export const updateSortedCompletedContactEmail = createAsyncThunk(
   'contacts/updateSortedCompletedContactEmail',
   async ({ email, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Details...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Details...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -530,8 +546,8 @@ export const updateSortedCompletedContactEmail = createAsyncThunk(
 export const updateSortedPastDueContactEmail = createAsyncThunk(
   'contacts/updateSortedPastDueContactEmail',
   async ({ email, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Task Details...', {
-      svgColor: '#5785FF',
+    Notiflix.Loading.pulse('Updating Appointment Details...', {
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -559,7 +575,7 @@ export const updateContactPhone = createAsyncThunk(
   'contacts/updateContactPhone',
   async ({ phone, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -587,7 +603,7 @@ export const updateSortedAllContactPhone = createAsyncThunk(
   'contacts/updateSortedAllContactPhone',
   async ({ phone, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -615,7 +631,7 @@ export const updateSortedPendingContactPhone = createAsyncThunk(
   'contacts/updateSortedPendingContactPhone',
   async ({ phone, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -643,7 +659,7 @@ export const updateSortedCompletedContactPhone = createAsyncThunk(
   'contacts/updateSortedCompletedContactPhone',
   async ({ phone, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -671,7 +687,7 @@ export const updateSortedPastDueContactPhone = createAsyncThunk(
   'contacts/updateSortedPastDueContactPhone',
   async ({ phone, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {

@@ -287,13 +287,13 @@ export const Contacts = () => {
               data-id={myContact._id}
             />
             <label className={css.detailsImageInput} htmlFor="2">
-              Update Task Image +
+              Update Booking Image +
             </label>
             <ul className={css.detailsWrapper}>
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Task Title:</span>{' '}
+                    <span className={css.details}>Name:</span>{' '}
                     {isNameEditing === false ? (
                       <span className={css.detailsVal}>
                         <i className={css.detail}>{myContact.name}</i>
@@ -343,7 +343,7 @@ export const Contacts = () => {
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Task Details:</span>{' '}
+                    <span className={css.details}>Booking Details:</span>{' '}
                     {isEmailEditing === false ? (
                       <pre className={css.detailsDetailsVal}>
                         <i className={css.detail}>{myContact.email}</i>

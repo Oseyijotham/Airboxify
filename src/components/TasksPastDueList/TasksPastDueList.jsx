@@ -18,6 +18,7 @@ import {
   handleFilterBackwardUp,
   handleFilterBackwardDown,
   updateStatus,
+  openPastDueMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import css from './TasksPastDueList.module.css';
 export const TasksPastDueList = ({ children }) => {
@@ -55,6 +56,7 @@ export const TasksPastDueList = ({ children }) => {
       //console.log(id);
       dispatch(fetchSortedPastDueContactById(id));
       dispatch(openSortedPastDueModal());
+      dispatch(openPastDueMobileAndTabModal());
     }
   };
   const [lowerLimit, setLowerLimit] = useState(0);
@@ -119,7 +121,7 @@ export const TasksPastDueList = ({ children }) => {
 
   return (
     <div className={css.contactsSection}>
-      <h3 className={css.contactsTitle}>Past Due Tasks</h3>
+      <h3 className={css.contactsTitle}>Past Due</h3>
       {children}
 
       {pastDueRay.length === 0 && (

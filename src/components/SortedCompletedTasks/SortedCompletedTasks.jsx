@@ -8,7 +8,7 @@ import {
   updateSortedCompletedContactName,
   updateSortedCompletedContactEmail,
   updateSortedCompletedContactPhone,
-  openCompletedMobileAndTabModal,
+  closeCompletedMobileAndTabModal,
 } from '../../redux/AppRedux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
@@ -56,7 +56,7 @@ export const Contacts = () => {
    dispatch(closeSortedCompletedModal());
    setNameEdit(false);
    setEmailEdit(false);
-   dispatch(openCompletedMobileAndTabModal());
+   dispatch(closeCompletedMobileAndTabModal());
   };
 
   const handleNameChange = evt => { 

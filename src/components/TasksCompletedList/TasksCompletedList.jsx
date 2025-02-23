@@ -117,7 +117,7 @@ export const TasksCompletedList = ({ children }) => {
 
   return (
     <div className={css.contactsSection}>
-      <h3 className={css.contactsTitle}>Completed Tasks</h3>
+      <h3 className={css.contactsTitle}>Completed</h3>
       {children}
 
       {completedMatches.length === 0 && (

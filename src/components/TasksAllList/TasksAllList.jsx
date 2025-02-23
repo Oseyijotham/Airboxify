@@ -182,7 +182,7 @@ export const TasksAllList = ({ children }) => {
         )}
       </div>
 
-      {filterValue !== '' && (
+      {/*filterValue !== '' && (
         <div className={css.navigationArea}>
           {filterDown !== 0 && (
             <button className={css.navigationButton} onClick={handleBackward}>
@@ -196,7 +196,7 @@ export const TasksAllList = ({ children }) => {
               </button>
             )}
         </div>
-      )}
+      )*/}
     </div>
   );
 };

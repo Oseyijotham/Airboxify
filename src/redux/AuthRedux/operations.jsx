@@ -2,9 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
-//axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
-axios.defaults.baseURL = 'https://oasis-tasks-backend.onrender.com/api';
+//axios.defaults.baseURL = 'https://oasis-tasks-backend.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -22,7 +22,7 @@ export const register = createAsyncThunk(
       'Please wait a bit, first requests can take up to 60 seconds because the backend is hosted with a free plan'
     );
     Notiflix.Loading.pulse('Registering Your Account...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -54,7 +54,7 @@ export const logIn = createAsyncThunk(
       'Please wait a bit, first requests can take up to 60 seconds because the backend is hosted with a free plan'
     );
     Notiflix.Loading.pulse('Logging You In...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
@@ -75,7 +75,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     Notiflix.Loading.pulse('Logging You Out...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
   try {
@@ -128,6 +128,7 @@ export const getUser = createAsyncThunk(
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
+      window.location.reload();
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -137,19 +138,14 @@ export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (file, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Your Picture...', {
-      svgColor: '#5785FF',
+      svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
       const res = await axios.patch('/users/avatars', file, { headers: { 'Content-Type': 'multipart/form-data' } });
-
       Notiflix.Loading.remove();
-      console.log(res)
       return res.data;
     } catch (error) {
-      alert(
-        'Incorrect Input'
-      );
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }

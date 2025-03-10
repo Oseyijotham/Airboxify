@@ -13,7 +13,7 @@ export const SharedSortingLayout = () => {
       <Header>
         <Link to="/sharedLayout/sorting/all">All</Link>
         <Link to="/sharedLayout/sorting/pending">Pending</Link>
-        <Link to="completed">Completed</Link>
+        <Link to="completed">Fulfilled</Link>
         <Link to="past_due">Past Due</Link>
       </Header>
 

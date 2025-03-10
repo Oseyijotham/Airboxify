@@ -3,6 +3,31 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 
 
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/contacts');
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async ({ name, phone }, thunkAPI) => {
+    try {
+      const response = await axios.post(`/contacts/`, { name, phone });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+
 export const openPastDueMobileAndTabModal = createAsyncThunk(
   'pastDueMobileAndTabModal/open',
   async () => {
@@ -785,34 +810,6 @@ export const fetchSortedPastDueContactById = createAsyncThunk(
   }
 );
 
-
-
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-        const response = await axios.get('/contacts');
-        //console.log (response.data);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-
-
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async ({ name, phone }, thunkAPI) => {
-    try {
-      const response = await axios.post(`/contacts/`, { name, phone });
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
 
 
 

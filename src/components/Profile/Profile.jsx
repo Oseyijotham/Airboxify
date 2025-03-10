@@ -71,7 +71,7 @@ export const Profile = () => {
         <ul className={css.detailsWrapper}>
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
-              <span className={css.details}>First Name:-</span>{' '}
+              <span className={css.details}>First Name:</span>{' '}
               <span className={css.detailsVal}>
                 <i className={css.detail}>{myUser.firstname}</i>
               </span>
@@ -79,7 +79,7 @@ export const Profile = () => {
           </li>
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
-              <span className={css.details}>Last Name:-</span>{' '}
+              <span className={css.details}>Last Name:</span>{' '}
               <span className={css.detailsVal}>
                 <i className={css.detail}>{myUser.lastname}</i>
               </span>
@@ -87,7 +87,7 @@ export const Profile = () => {
           </li>
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
-              <span className={css.details}>Email:-</span>{' '}
+              <span className={css.details}>Email:</span>{' '}
               <span className={css.detailsVal}>
                 <i className={css.detail}>{myUser.email}</i>
               </span>
@@ -95,7 +95,7 @@ export const Profile = () => {
           </li>
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
-              <span className={css.details}>Phone:-</span>{' '}
+              <span className={css.details}>Phone:</span>{' '}
               <span className={css.detailsVal}>
                 <i className={css.detail}>{myUser.phone}</i>
               </span>

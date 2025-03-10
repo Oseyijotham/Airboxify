@@ -79,6 +79,10 @@ export const Home = () => {
         </div>
       </div>
 
+      <Link to="/sharedLayout/tasks" className={css.homeLink}>
+        View Admin Dashboard
+      </Link>
+
       <div className={css.hero}>
         <div className={css.offersLabelWrapper}>
           <div className={css.offersLabel}>We offer</div>
@@ -243,10 +247,6 @@ export const Home = () => {
         </div>
       </div>
 
-      <Link to="/sharedLayout/tasks" className={css.homeLink}>
-        Start Planning
-      </Link>
-
       {isLoading && !error && <div>Please wait...</div>}
       {error && <div>There was an error</div>}
 
@@ -255,7 +255,7 @@ export const Home = () => {
         <div className={css.detailsImageWrapper}>
           <img
             className={css.detailsImage}
-            src={`https://oasis-tasks-backend.onrender.com${myUser.avatarURL}`}
+            src={`${myUser.avatarURL}`}
             alt="User"
           />
         </div>

@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   flex-grow: 1;
-  margin: 0 auto;
-  padding: 0 16px;
+  
 `;
 
 

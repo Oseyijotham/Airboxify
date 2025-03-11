@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Airboxify/static/css/main.89cec8a6.css",
-    "main.js": "/Airboxify/static/js/main.521ecc42.js",
+    "main.js": "/Airboxify/static/js/main.7b9f8168.js",
     "static/css/15.70c1ec72.chunk.css": "/Airboxify/static/css/15.70c1ec72.chunk.css",
     "static/js/15.7c9c02aa.chunk.js": "/Airboxify/static/js/15.7c9c02aa.chunk.js",
     "static/css/262.2112b553.chunk.css": "/Airboxify/static/css/262.2112b553.chunk.css",
@@ -12,13 +12,13 @@
     "static/js/849.3d47c210.chunk.js": "/Airboxify/static/js/849.3d47c210.chunk.js",
     "static/css/461.bc9cb5d0.chunk.css": "/Airboxify/static/css/461.bc9cb5d0.chunk.css",
     "static/js/461.f4e37609.chunk.js": "/Airboxify/static/js/461.f4e37609.chunk.js",
-    "static/css/469.b5d5cdf7.chunk.css": "/Airboxify/static/css/469.b5d5cdf7.chunk.css",
+    "static/css/469.c2cf5826.chunk.css": "/Airboxify/static/css/469.c2cf5826.chunk.css",
     "static/js/469.d8957fce.chunk.js": "/Airboxify/static/js/469.d8957fce.chunk.js",
-    "static/css/337.7d88dc21.chunk.css": "/Airboxify/static/css/337.7d88dc21.chunk.css",
+    "static/css/337.3f1516a0.chunk.css": "/Airboxify/static/css/337.3f1516a0.chunk.css",
     "static/js/337.bc161245.chunk.js": "/Airboxify/static/js/337.bc161245.chunk.js",
-    "static/css/682.513e1abd.chunk.css": "/Airboxify/static/css/682.513e1abd.chunk.css",
+    "static/css/682.49a9d17f.chunk.css": "/Airboxify/static/css/682.49a9d17f.chunk.css",
     "static/js/682.059bfc53.chunk.js": "/Airboxify/static/js/682.059bfc53.chunk.js",
-    "static/css/864.70a49a9b.chunk.css": "/Airboxify/static/css/864.70a49a9b.chunk.css",
+    "static/css/864.45ae116c.chunk.css": "/Airboxify/static/css/864.45ae116c.chunk.css",
     "static/js/864.a11e265e.chunk.js": "/Airboxify/static/js/864.a11e265e.chunk.js",
     "static/css/420.5d389e35.chunk.css": "/Airboxify/static/css/420.5d389e35.chunk.css",
     "static/js/420.26464874.chunk.js": "/Airboxify/static/js/420.26464874.chunk.js",
@@ -35,7 +35,7 @@
     "index.html": "/Airboxify/index.html",
     "static/media/list2.svg": "/Airboxify/static/media/list2.143e2e7e12285cdac47190b8872b6f89.svg",
     "main.89cec8a6.css.map": "/Airboxify/static/css/main.89cec8a6.css.map",
-    "main.521ecc42.js.map": "/Airboxify/static/js/main.521ecc42.js.map",
+    "main.7b9f8168.js.map": "/Airboxify/static/js/main.7b9f8168.js.map",
     "15.70c1ec72.chunk.css.map": "/Airboxify/static/css/15.70c1ec72.chunk.css.map",
     "15.7c9c02aa.chunk.js.map": "/Airboxify/static/js/15.7c9c02aa.chunk.js.map",
     "262.2112b553.chunk.css.map": "/Airboxify/static/css/262.2112b553.chunk.css.map",
@@ -46,13 +46,13 @@
     "849.3d47c210.chunk.js.map": "/Airboxify/static/js/849.3d47c210.chunk.js.map",
     "461.bc9cb5d0.chunk.css.map": "/Airboxify/static/css/461.bc9cb5d0.chunk.css.map",
     "461.f4e37609.chunk.js.map": "/Airboxify/static/js/461.f4e37609.chunk.js.map",
-    "469.b5d5cdf7.chunk.css.map": "/Airboxify/static/css/469.b5d5cdf7.chunk.css.map",
+    "469.c2cf5826.chunk.css.map": "/Airboxify/static/css/469.c2cf5826.chunk.css.map",
     "469.d8957fce.chunk.js.map": "/Airboxify/static/js/469.d8957fce.chunk.js.map",
-    "337.7d88dc21.chunk.css.map": "/Airboxify/static/css/337.7d88dc21.chunk.css.map",
+    "337.3f1516a0.chunk.css.map": "/Airboxify/static/css/337.3f1516a0.chunk.css.map",
     "337.bc161245.chunk.js.map": "/Airboxify/static/js/337.bc161245.chunk.js.map",
-    "682.513e1abd.chunk.css.map": "/Airboxify/static/css/682.513e1abd.chunk.css.map",
+    "682.49a9d17f.chunk.css.map": "/Airboxify/static/css/682.49a9d17f.chunk.css.map",
     "682.059bfc53.chunk.js.map": "/Airboxify/static/js/682.059bfc53.chunk.js.map",
-    "864.70a49a9b.chunk.css.map": "/Airboxify/static/css/864.70a49a9b.chunk.css.map",
+    "864.45ae116c.chunk.css.map": "/Airboxify/static/css/864.45ae116c.chunk.css.map",
     "864.a11e265e.chunk.js.map": "/Airboxify/static/js/864.a11e265e.chunk.js.map",
     "420.5d389e35.chunk.css.map": "/Airboxify/static/css/420.5d389e35.chunk.css.map",
     "420.26464874.chunk.js.map": "/Airboxify/static/js/420.26464874.chunk.js.map",
@@ -61,6 +61,6 @@
   },
   "entrypoints": [
     "static/css/main.89cec8a6.css",
-    "static/js/main.521ecc42.js"
+    "static/js/main.7b9f8168.js"
   ]
 }

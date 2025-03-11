@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/Airboxify/static/css/main.89cec8a6.css",
-    "main.js": "/Airboxify/static/js/main.36cba9eb.js",
+    "main.js": "/Airboxify/static/js/main.521ecc42.js",
     "static/css/15.70c1ec72.chunk.css": "/Airboxify/static/css/15.70c1ec72.chunk.css",
     "static/js/15.7c9c02aa.chunk.js": "/Airboxify/static/js/15.7c9c02aa.chunk.js",
     "static/css/262.2112b553.chunk.css": "/Airboxify/static/css/262.2112b553.chunk.css",
     "static/js/262.afe9e518.chunk.js": "/Airboxify/static/js/262.afe9e518.chunk.js",
-    "static/css/396.11bda898.chunk.css": "/Airboxify/static/css/396.11bda898.chunk.css",
+    "static/css/396.2747ed38.chunk.css": "/Airboxify/static/css/396.2747ed38.chunk.css",
     "static/js/396.a3e0f37c.chunk.js": "/Airboxify/static/js/396.a3e0f37c.chunk.js",
     "static/css/849.e31e2faf.chunk.css": "/Airboxify/static/css/849.e31e2faf.chunk.css",
     "static/js/849.3d47c210.chunk.js": "/Airboxify/static/js/849.3d47c210.chunk.js",
@@ -35,12 +35,12 @@
     "index.html": "/Airboxify/index.html",
     "static/media/list2.svg": "/Airboxify/static/media/list2.143e2e7e12285cdac47190b8872b6f89.svg",
     "main.89cec8a6.css.map": "/Airboxify/static/css/main.89cec8a6.css.map",
-    "main.36cba9eb.js.map": "/Airboxify/static/js/main.36cba9eb.js.map",
+    "main.521ecc42.js.map": "/Airboxify/static/js/main.521ecc42.js.map",
     "15.70c1ec72.chunk.css.map": "/Airboxify/static/css/15.70c1ec72.chunk.css.map",
     "15.7c9c02aa.chunk.js.map": "/Airboxify/static/js/15.7c9c02aa.chunk.js.map",
     "262.2112b553.chunk.css.map": "/Airboxify/static/css/262.2112b553.chunk.css.map",
     "262.afe9e518.chunk.js.map": "/Airboxify/static/js/262.afe9e518.chunk.js.map",
-    "396.11bda898.chunk.css.map": "/Airboxify/static/css/396.11bda898.chunk.css.map",
+    "396.2747ed38.chunk.css.map": "/Airboxify/static/css/396.2747ed38.chunk.css.map",
     "396.a3e0f37c.chunk.js.map": "/Airboxify/static/js/396.a3e0f37c.chunk.js.map",
     "849.e31e2faf.chunk.css.map": "/Airboxify/static/css/849.e31e2faf.chunk.css.map",
     "849.3d47c210.chunk.js.map": "/Airboxify/static/js/849.3d47c210.chunk.js.map",
@@ -61,6 +61,6 @@
   },
   "entrypoints": [
     "static/css/main.89cec8a6.css",
-    "static/js/main.36cba9eb.js"
+    "static/js/main.521ecc42.js"
   ]
 }

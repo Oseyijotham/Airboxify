@@ -100,7 +100,7 @@
 }
 
 .sortedWrapper{
-  width:100%;
+  width:98%;
   border-radius: 30px;
   transform: translateX(0%);
   transition: transform 1250ms cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -118,7 +118,8 @@
   align-items: center;
   justify-content:center;
   position: relative;
-  padding: 5px;
+   padding-top: 5px;
+  padding-bottom: 5px;
   transition: padding 1250ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 

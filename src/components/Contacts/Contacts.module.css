@@ -295,7 +295,7 @@ font-size: 26px;
 @media screen and (max-width:767px) {
   .detailsWrapper{
     font-size: 13px;
-    width: 290px;
+    
   }
 }
 

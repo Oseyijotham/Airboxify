@@ -123,7 +123,7 @@
 }
 
 .contactsWrapperSpace{
-  padding:40px;
+  padding:45px;
 }
 
 .selected{
@@ -192,6 +192,33 @@
 }
 
 
+.detailsTitle{
+  box-shadow: inset 0 0 10px 2px #9225ff;
+    background-color: #280a46;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 30px;
+    border: 2px solid #ffb800;
+    font-weight: 700;
+}
+
+@media screen and (min-width:768px) {
+  .detailsTitle{
+font-size: 16px;
+  }
+}
+
+@media screen and (min-width:1280px) {
+  .detailsTitle{
+font-size: 26px;
+  }
+}
+
+
 .detailsSection{
   padding: 10px;
   display: inline-block;
@@ -227,12 +254,19 @@
   color: #fff;
   font-family: 'DM Sans';
   font-weight: 700;
+  font-size: 13px;
   background-image: linear-gradient(to top left, #ffb800, #9225ff);
   border: 1px solid #fff;
   cursor: pointer;
   display: inline-block;
 }
 
+
+@media screen and (min-width:768px){
+  .detailsImageInput{
+     font-size: 16px;
+  }
+}
 
 .detailsImageInput:hover{
    background-image: linear-gradient(to bottom right, #9225ff, #ffb800);

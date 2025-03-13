@@ -254,6 +254,7 @@ font-size: 26px;
   color: #fff;
   font-family: 'DM Sans';
   font-weight: 700;
+   font-size: 13px;
   background-image: linear-gradient(to top left, #ffb800, #9225ff);
   border: 1px solid #fff;
   cursor: pointer;
@@ -263,6 +264,12 @@ font-size: 26px;
 
 .detailsImageInput:hover{
    background-image: linear-gradient(to bottom right, #9225ff, #ffb800);
+}
+
+@media screen and (min-width:768px){
+  .detailsImageInput{
+     font-size: 16px;
+  }
 }
 
 .detailsSectionTitle{

@@ -271,6 +271,7 @@ export const Contacts = () => {
                 <use href={`${svg}#icon-cross`}></use>
               </svg>
             </button>
+            <p className={css.detailsTitle}>CUSTOMER DETAILS</p>
             <div className={css.detailsImageWrapper}>
               <img
                 className={css.detailsImage}
@@ -294,7 +295,7 @@ export const Contacts = () => {
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Task Title:</span>{' '}
+                    <span className={css.details}>Name:</span>{' '}
                     {isNameEditing === false ? (
                       <span className={css.detailsVal}>
                         <i className={css.detail}>{myContact.name}</i>
@@ -344,11 +345,10 @@ export const Contacts = () => {
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Task Details:</span>{' '}
+                    <span className={css.details}>Booking Details:</span>{' '}
                     {isEmailEditing === false ? (
                       <pre className={css.detailsDetailsVal}>
                         <i className={css.detail}>{myContact.email}</i>
-                        {console.log(myContact.email)}
                       </pre>
                     ) : (
                       <textarea
@@ -503,6 +503,7 @@ export const Contacts = () => {
             <use href={`${svg}#icon-cross`}></use>
           </svg>
         </button>
+        <p className={css.detailsTitle}>CUSTOMER DETAILS</p>
         <div className={css.detailsImageWrapper}>
           <img
             className={css.detailsImage}
@@ -526,7 +527,7 @@ export const Contacts = () => {
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
               <span className={css.detailsInfo}>
-                <span className={css.details}>Task Title:</span>{' '}
+                <span className={css.details}>Name:</span>{' '}
                 {isNameEditing === false ? (
                   <span className={css.detailsVal}>
                     <i className={css.detail}>{myContact.name}</i>
@@ -573,7 +574,7 @@ export const Contacts = () => {
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
               <span className={css.detailsInfo}>
-                <span className={css.details}>Task Details:</span>{' '}
+                <span className={css.details}>Booking Details:</span>{' '}
                 {isEmailEditing === false ? (
                   <pre className={css.detailsDetailsVal}>
                     <i className={css.detail}>{myContact.email}</i>

@@ -15,7 +15,7 @@ import {
 } from './SharedLayout.styled';
 import { useState,Suspense } from 'react';
 import { logOut } from '../../redux/AuthRedux/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuthHook } from '../../customHook/customHook';
 import logoImage from './Airboxify.png';
 import { useMediaQuery } from 'react-responsive';
@@ -23,9 +23,11 @@ import svg from './icons.svg';
 import clsx from 'clsx';
 import css from './SharedLayout.module.css';
 import { Link } from 'react-router-dom';
+import { selectUser } from '../../redux/AuthRedux/selectors';
 
 
 export const SharedLayout = () => {
+  const myUser = useSelector(selectUser);
   const [isMenuHidden, setMenuHide] = useState(true);
   const dispatch = useDispatch();
   const { user } = useAuthHook();
@@ -92,10 +94,17 @@ export const SharedLayout = () => {
               </svg>
             </button>
 
-            <div className={css.headerWindowNameWrapper} href="#">
-              <span className={css.headerWindowName}>
-                {user.firstname}
-              </span>
+            <div className={css.headerWindowNameWrapper}>
+              <div className={css.userWrapper}>
+                <div className={css.imageWrapper}>
+                  <img
+                    className={css.detailsImage}
+                    src={`${myUser.avatarURL}`}
+                    alt="User"
+                  />
+                </div>
+                <span className={css.headerWindowName}>{user.firstname}</span>
+              </div>
             </div>
 
             <nav className={css.headerWindowNav}>

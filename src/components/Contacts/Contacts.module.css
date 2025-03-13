@@ -593,7 +593,7 @@ background-color: #ffb800 ;
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(to top left, #ffb800, #9225ff);
- 
+  position: relative;
       border-radius: 30px;
 }
 

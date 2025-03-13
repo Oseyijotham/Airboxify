@@ -66,7 +66,7 @@ font-style: normal;
 font-weight: 700;
 line-height: calc(20.83/16);
 color: #fff;
-margin-bottom: 5px;
+margin-bottom: 10px;
 padding: 5px;
 }
 
@@ -93,7 +93,7 @@ padding: 5px;
 }
 
 .headerWindowName {
-
+color: #280a46;
 }
 
 
@@ -110,37 +110,50 @@ padding: 5px;
 }
 
 .headerWindowNavItem{
-    padding-left: 20px;
-    padding-top: 13px;
-    padding-bottom: 11px;
-    padding-right: 20px;
-    border-top: 1px solid #ffb800;
-    border-bottom: 1px solid #ffb800;
+
 }
 
 .headerWindowNavLink{
-    font-family: "DM Sans";
+     display: block;
+    padding: 10px;
+    border-top: 2px solid #ffb800;
+    border-bottom: 2px solid #ffb800;
+    border-right: 2px solid #ffb800;
+    width:70%;
+    border-top-right-radius: 30px; /* Radius for the top-right corner */
+    border-bottom-right-radius: 30px;
+    background-color: #9225ff;
+     font-family: "DM Sans";
     font-size: 14px;
     font-weight: 700;
     line-height: calc(18.23/14);
     color:#fff;
 }
 
-.headerWindowNavLink:hover,.headerWindowNavLink:hover{
-    color:#280a46;;
+.headerWindowNavLink:hover,.headerWindowNavLink:focus{
+    background-color:#280a46;
 }
 
 .headerWindowNavButton{
-    font-family: "DM Sans";
+     display: block;
+    padding: 10px;
+    border-top: 2px solid #ffb800;
+    border-bottom: 2px solid #ffb800;
+    border-right: 2px solid #ffb800;
+    width:70%;
+    border-top-right-radius: 30px; /* Radius for the top-right corner */
+    border-bottom-right-radius: 30px;
+    background-color: #9225ff;
+     font-family: "DM Sans";
     font-size: 14px;
     font-weight: 700;
     line-height: calc(18.23/14);
     color:#fff;
-    background-color: transparent;
-    border: none;
+    text-align: start;
     cursor: pointer;
 }
 
-.headerWindowNavButton:hover,.headerWindowNavButton:hover{
-    color:#280a46;;
+.headerWindowNavButton:hover,.headerWindowNavButton:focus{
+    background-color:#280a46;
 }
+

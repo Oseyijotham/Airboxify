@@ -107,9 +107,9 @@ export const SharedLayout = () => {
               </div>
             </div>
 
-            <nav className={css.headerWindowNav}>
-              <ul className={css.headerWindowNavList}>
-                <li className={css.headerWindowNavItem}>
+            <div className={css.headerWindowNav}>
+              <div className={css.headerWindowNavList}>
+                
                   <Link
                     to="/sharedLayout/Home"
                     className={css.headerWindowNavLink}
@@ -117,7 +117,7 @@ export const SharedLayout = () => {
                   >
                     Home
                   </Link>
-                </li>
+                
                 <li className={css.headerWindowNavItem}>
                   <Link
                     to="/sharedLayout/tasks"
@@ -145,7 +145,7 @@ export const SharedLayout = () => {
                     My Profile
                   </Link>
                 </li>
-                <li className={css.headerWindowNavItem}>
+                
                   <button
                     type="button"
                     className={css.headerWindowNavButton}
@@ -153,9 +153,9 @@ export const SharedLayout = () => {
                   >
                     Logout
                   </button>
-                </li>
-              </ul>
-            </nav>
+                
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -137,6 +137,7 @@ color: #280a46;
 .headerWindowNavButton{
      display: block;
     padding: 10px;
+    border-left: none;
     border-top: 2px solid #ffb800;
     border-bottom: 2px solid #ffb800;
     border-right: 2px solid #ffb800;

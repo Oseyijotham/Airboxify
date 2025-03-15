@@ -149,7 +149,7 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false;
         state.contacts.error = null;
-        state.contacts.items.push(action.payload);
+        state.contacts.items = action.payload;
         //console.log(action.payload);
         //myContacts.push(action.payload);
       })

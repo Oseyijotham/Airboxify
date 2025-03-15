@@ -817,8 +817,8 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (taskId, thunkAPI) => {
     try {
-      await axios.delete(`/contacts/${taskId}`);
-      const res = await axios.get('/contacts');
+     const res = await axios.delete(`/contacts/${taskId}`);
+      //await axios.get('/contacts');
       const state = thunkAPI.getState();
       const selectedContact = state.contacts.contacts.selectedContact;
       const selectedSortedAllContact = state.contacts.contacts.selectedSortedAllContact;

@@ -114,7 +114,7 @@ export const TasksPastDueList = ({ children }) => {
     (contact) => {
       const nowSortDate = new Date();
       //return contact.status === false;
-      return nowSortDate > new Date(contact.phone);
+      return nowSortDate > new Date(contact.phone) && contact.status === false;
     }
   );
 

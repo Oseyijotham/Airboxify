@@ -12,9 +12,10 @@ import { setFilter } from '../../redux/AppRedux/filterSlice';
 import {
   deleteContact,
   openModal,
-  fetchContactById
+  fetchContactById,
+  openMobileAndTabModal,
+  updateStatus,
 } from '../../redux/AppRedux/operations';
-//import svg from '../SharedLayout/icons.svg';
 
 export const Filter = () => {
   const searchTermId = nanoid();
@@ -35,12 +36,10 @@ export const Filter = () => {
 
   const handleModalOpen = evt => {
     if (evt.target.getAttribute('data-id')) {
-      //console.log('Modal opened!');
-
       const id = evt.currentTarget.getAttribute('data-id');
-      //console.log(id);
       dispatch(fetchContactById(id));
       dispatch(openModal());
+      dispatch(openMobileAndTabModal());
     }
   };
 
@@ -49,16 +48,12 @@ export const Filter = () => {
     setTimeout(() => {
       evt.target.style.boxShadow = 'none';
     }, 1000);
-    //console.log(evt.target.name);
     dispatch(deleteContact(evt.target.name));
-    /*//dispatch(closeModal());
-    const exist = contacts.find(contact => contact._id === evt.target.name);
-    console.log(contacts);
-    if (exist === undefined) {
-      console.log('gvghi');
-      dispatch(closeModal());
-    }*/
   };
+
+   const handleChange = (evt) => {
+      dispatch(updateStatus({ status: evt.target.checked, myUpdateStatusId:evt.target.name}));
+    }
 
   return (
     <div className={css.contactList}>
@@ -92,7 +87,14 @@ export const Filter = () => {
                   onClick={handleModalOpen}
                 >
                   <span className={css.contactsData} data-id={contact._id}>
-                    <input type="checkbox" className={css.checkbox} />:{' '}
+                    <input
+                      type="checkbox"
+                      className={css.checkbox}
+                      checked={contact.status}
+                      name={contact._id}
+                      onChange={handleChange}
+                    />
+                    :{' '}
                     <span className={css.contactsPhone} data-id={contact._id}>
                       {contact.name}
                     </span>
@@ -104,7 +106,7 @@ export const Filter = () => {
                       name={contact._id}
                       onClick={handleDelete}
                     >
-                    Delete
+                      Delete
                     </button>
                   </span>
                 </li>

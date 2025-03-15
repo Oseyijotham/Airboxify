@@ -8,8 +8,9 @@ import { RestrictedRouteRegister } from '../RestrictedRouteRegister/RestrictedRo
 import { RestrictedRouteLogin } from '../RestrictedRouteLogin/RestrictedRouteLogin';
 import { RestrictedRouteNav } from '../RestrictedRouteNav/RestrictedRouteNav';
 import { refreshUser, getUser } from '../../redux/AuthRedux/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuthHook } from '../../customHook/customHook'
+
 
 const Register = lazy(() => import('../Register/Register'));
 const Login = lazy(() => import('../Login/Login'));
@@ -25,7 +26,7 @@ const Profile = lazy(() => import('../Profile/Profile'));
 export const App = () => {
   const { isRefreshing } = useAuthHook();
   const dispatch = useDispatch();
-
+  
 
     useEffect(() => {
       dispatch(refreshUser());
@@ -65,7 +66,6 @@ export const App = () => {
               index
               element={
                 <RestrictedRouteNav
-                  redirectTo="all"
                   component={<SharedSortingLayout />}
                 />
               }

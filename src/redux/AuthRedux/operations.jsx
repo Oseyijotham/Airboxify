@@ -2,9 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
-//axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
-axios.defaults.baseURL = 'https://oasis-tasks-backend.onrender.com/api';
+//axios.defaults.baseURL = 'https://oasis-tasks-backend.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -149,5 +149,27 @@ export const updateAvatar = createAsyncThunk(
       Notiflix.Loading.remove();
       return thunkAPI.rejectWithValue(error.message);
     }
+  }
+);
+
+export const setSortAll = createAsyncThunk(
+  'setSort/all',
+  async () => {
+    return true;
+  }
+);
+
+export const setSortPending = createAsyncThunk('setSort/pending', async () => {
+  return true;
+});
+
+export const setSortFulfilled = createAsyncThunk('setSort/fulfilled', async () => {
+  return true;
+});
+
+export const setSortPastDue = createAsyncThunk(
+  'setSort/pastDue',
+  async () => {
+    return true;
   }
 );

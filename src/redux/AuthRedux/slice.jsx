@@ -6,6 +6,10 @@ import {
   refreshUser,
   updateAvatar,
   getUser,
+  setSortAll,
+  setSortPending,
+  setSortFulfilled,
+  setSortPastDue
 } from './operations';
 
 const initialState = {
@@ -13,7 +17,11 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRegistered: false,
-  isRefreshing: false
+  isRefreshing: false,
+  all: false,
+  pending: false,
+  fulfilled: false,
+  pastDue:false
 };
 
 const authSlice = createSlice({
@@ -64,6 +72,30 @@ const authSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
+      })
+      .addCase(setSortAll.fulfilled, (state, action) => {
+        state.all = action.payload;
+        state.pending = false;
+        state.fulfilled = false;
+        state.pastDue = false;
+      })
+      .addCase(setSortPending.fulfilled, (state, action) => {
+        state.all = false;
+        state.pending = action.payload;
+        state.fulfilled = false;
+        state.pastDue = false;
+      })
+      .addCase(setSortFulfilled.fulfilled, (state, action) => {
+        state.all = false;
+        state.pending = false;
+        state.fulfilled = action.payload;
+        state.pastDue = false;
+      })
+    .addCase(setSortPastDue.fulfilled, (state, action) => {
+        state.all = false;
+        state.pending = false;
+        state.fulfilled = false;
+        state.pastDue = action.payload;
       });
   },
 });

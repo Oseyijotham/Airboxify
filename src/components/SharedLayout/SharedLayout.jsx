@@ -103,21 +103,22 @@ export const SharedLayout = () => {
                     alt="User"
                   />
                 </div>
-                <span className={css.headerWindowName}>{user.firstname}</span>
+                <span className={css.headerWindowName}>
+                  <i>{user.firstname}</i>
+                </span>
               </div>
             </div>
 
             <div className={css.headerWindowNav}>
               <div className={css.headerWindowNavList}>
-                
-                  <Link
-                    to="/sharedLayout/Home"
-                    className={css.headerWindowNavLink}
-                    onClick={() => setMenuHide(true)}
-                  >
-                    Home
-                  </Link>
-                
+                <Link
+                  to="/sharedLayout/Home"
+                  className={css.headerWindowNavLink}
+                  onClick={() => setMenuHide(true)}
+                >
+                  Home
+                </Link>
+
                 <li className={css.headerWindowNavItem}>
                   <Link
                     to="/sharedLayout/tasks"
@@ -145,15 +146,14 @@ export const SharedLayout = () => {
                     My Profile
                   </Link>
                 </li>
-                
-                  <button
-                    type="button"
-                    className={css.headerWindowNavButton}
-                    onClick={() => dispatch(logOut())}
-                  >
-                    Logout
-                  </button>
-                
+
+                <button
+                  type="button"
+                  className={css.headerWindowNavButton}
+                  onClick={() => dispatch(logOut())}
+                >
+                  Logout
+                </button>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Airboxify/static/css/main.3b85c825.css",
-    "main.js": "/Airboxify/static/js/main.ee7a16fa.js",
+    "main.js": "/Airboxify/static/js/main.9b8bf26f.js",
     "static/css/15.3602947a.chunk.css": "/Airboxify/static/css/15.3602947a.chunk.css",
     "static/js/15.7c9c02aa.chunk.js": "/Airboxify/static/js/15.7c9c02aa.chunk.js",
     "static/css/262.ba3ecb66.chunk.css": "/Airboxify/static/css/262.ba3ecb66.chunk.css",
@@ -13,7 +13,7 @@
     "static/css/461.bc9cb5d0.chunk.css": "/Airboxify/static/css/461.bc9cb5d0.chunk.css",
     "static/js/461.f4e37609.chunk.js": "/Airboxify/static/js/461.f4e37609.chunk.js",
     "static/css/469.0c93ef19.chunk.css": "/Airboxify/static/css/469.0c93ef19.chunk.css",
-    "static/js/469.ce444d41.chunk.js": "/Airboxify/static/js/469.ce444d41.chunk.js",
+    "static/js/469.3f31fcc7.chunk.js": "/Airboxify/static/js/469.3f31fcc7.chunk.js",
     "static/css/337.a5d9adfd.chunk.css": "/Airboxify/static/css/337.a5d9adfd.chunk.css",
     "static/js/337.efe69251.chunk.js": "/Airboxify/static/js/337.efe69251.chunk.js",
     "static/css/682.8dcd45f7.chunk.css": "/Airboxify/static/css/682.8dcd45f7.chunk.css",
@@ -35,7 +35,7 @@
     "index.html": "/Airboxify/index.html",
     "static/media/list2.svg": "/Airboxify/static/media/list2.143e2e7e12285cdac47190b8872b6f89.svg",
     "main.3b85c825.css.map": "/Airboxify/static/css/main.3b85c825.css.map",
-    "main.ee7a16fa.js.map": "/Airboxify/static/js/main.ee7a16fa.js.map",
+    "main.9b8bf26f.js.map": "/Airboxify/static/js/main.9b8bf26f.js.map",
     "15.3602947a.chunk.css.map": "/Airboxify/static/css/15.3602947a.chunk.css.map",
     "15.7c9c02aa.chunk.js.map": "/Airboxify/static/js/15.7c9c02aa.chunk.js.map",
     "262.ba3ecb66.chunk.css.map": "/Airboxify/static/css/262.ba3ecb66.chunk.css.map",
@@ -47,7 +47,7 @@
     "461.bc9cb5d0.chunk.css.map": "/Airboxify/static/css/461.bc9cb5d0.chunk.css.map",
     "461.f4e37609.chunk.js.map": "/Airboxify/static/js/461.f4e37609.chunk.js.map",
     "469.0c93ef19.chunk.css.map": "/Airboxify/static/css/469.0c93ef19.chunk.css.map",
-    "469.ce444d41.chunk.js.map": "/Airboxify/static/js/469.ce444d41.chunk.js.map",
+    "469.3f31fcc7.chunk.js.map": "/Airboxify/static/js/469.3f31fcc7.chunk.js.map",
     "337.a5d9adfd.chunk.css.map": "/Airboxify/static/css/337.a5d9adfd.chunk.css.map",
     "337.efe69251.chunk.js.map": "/Airboxify/static/js/337.efe69251.chunk.js.map",
     "682.8dcd45f7.chunk.css.map": "/Airboxify/static/css/682.8dcd45f7.chunk.css.map",
@@ -61,6 +61,6 @@
   },
   "entrypoints": [
     "static/css/main.3b85c825.css",
-    "static/js/main.ee7a16fa.js"
+    "static/js/main.9b8bf26f.js"
   ]
 }

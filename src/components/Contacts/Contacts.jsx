@@ -274,7 +274,7 @@ export const Contacts = () => {
             <div className={css.detailsImageWrapper}>
               <img
                 className={css.detailsImage}
-                src={`https://oasis-tasks-backend.onrender.com${myContact.avatarURL}`}
+                src={`${myContact.avatarURL}`}
                 alt="Contact"
               />
             </div>
@@ -288,7 +288,7 @@ export const Contacts = () => {
               data-id={myContact._id}
             />
             <label className={css.detailsImageInput} htmlFor="2">
-              Update Booking Image +
+              Update Customer Image +
             </label>
             <ul className={css.detailsWrapper}>
               <li className={css.detailsItem}>
@@ -513,7 +513,7 @@ export const Contacts = () => {
             <div className={css.detailsImageWrapper}>
               <img
                 className={css.detailsImage}
-                src={`https://oasis-tasks-backend.onrender.com${myContact.avatarURL}`}
+                src={`${myContact.avatarURL}`}
                 alt="Contact"
               />
             </div>

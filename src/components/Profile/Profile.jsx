@@ -53,7 +53,7 @@ export const Profile = () => {
         <div className={css.detailsImageWrapper}>
           <img
             className={css.detailsImage}
-            src={`https://oasis-tasks-backend.onrender.com${myUser.avatarURL}`}
+            src={`${myUser.avatarURL}`}
             alt="User"
           />
         </div>

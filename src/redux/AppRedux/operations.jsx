@@ -203,7 +203,7 @@ export const handleFilterBackwardDown = createAsyncThunk(
 export const updateContactAvatar = createAsyncThunk(
   'contacts/updateContactAvatar',
   async ({myFile, myId}, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Image...', {
+    Notiflix.Loading.pulse('Updating Client Avatar...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -222,7 +222,7 @@ export const updateContactAvatar = createAsyncThunk(
 export const updateSortedAllContactAvatar = createAsyncThunk(
   'contacts/updateSortedAllContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Image...', {
+    Notiflix.Loading.pulse('Updating Client Avatar...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -245,7 +245,7 @@ export const updateSortedAllContactAvatar = createAsyncThunk(
 export const updateSortedPendingContactAvatar = createAsyncThunk(
   'contacts/updateSortedPendingContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Image...', {
+    Notiflix.Loading.pulse('Updating Client Avatar...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -268,7 +268,7 @@ export const updateSortedPendingContactAvatar = createAsyncThunk(
 export const updateSortedCompletedContactAvatar = createAsyncThunk(
   'contacts/updateSortedCompletedContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Image...', {
+    Notiflix.Loading.pulse('Updating Client Avatar...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -291,7 +291,7 @@ export const updateSortedCompletedContactAvatar = createAsyncThunk(
 export const updateSortedPastDueContactAvatar = createAsyncThunk(
   'contacts/updateSortedPastdueContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Image...', {
+    Notiflix.Loading.pulse('Updating Client Avatar...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -315,7 +315,7 @@ export const updateSortedPastDueContactAvatar = createAsyncThunk(
 export const updateContactName = createAsyncThunk(
   'contacts/updateContactName',
   async ({ name, myUpdateId}, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Title...', {
+    Notiflix.Loading.pulse('Updating Client Name...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -346,7 +346,7 @@ export const updateContactName = createAsyncThunk(
 export const updateSortedAllContactName = createAsyncThunk(
   'contacts/updateSortedAllContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updatin Appointment Title...', {
+    Notiflix.Loading.pulse('Updating Client Name...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -374,7 +374,7 @@ export const updateSortedAllContactName = createAsyncThunk(
 export const updateSortedPendingContactName = createAsyncThunk(
   'contacts/updateSortedPendingContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Title...', {
+    Notiflix.Loading.pulse('Updating Client Name...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -402,7 +402,7 @@ export const updateSortedPendingContactName = createAsyncThunk(
 export const updateSortedCompletedContactName = createAsyncThunk(
   'contacts/updateSortedCompletedContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Title...', {
+    Notiflix.Loading.pulse('Updating Client Name...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -430,7 +430,7 @@ export const updateSortedCompletedContactName = createAsyncThunk(
 export const updateSortedPastDueContactName = createAsyncThunk(
   'contacts/updateSortedPastDueContactName',
   async ({ name, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Title...', {
+    Notiflix.Loading.pulse('Updating Client Name...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });

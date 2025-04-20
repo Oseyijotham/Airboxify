@@ -29,8 +29,10 @@ import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/material_blue.css';
 import { Suspense } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useRef } from 'react';
 
 export const Contacts = () => {
+  const myRef = useRef();
    const [date, setDate] = useState(new Date());
   const [isNameEditing, setNameEdit] = useState(false);
   const [nameValue, setNameValue] = useState("");
@@ -196,6 +198,7 @@ export const Contacts = () => {
      if (file) {
        dispatch(updateSortedAllContactAvatar({ myFile: file, myId: id })); // Store the file under the key "avatar"
      }
+     myRef.current.value = '';
    };
 
   useEffect(() => {
@@ -284,6 +287,7 @@ export const Contacts = () => {
               type="file"
               accept="image/*"
               name="avatar"
+              ref={myRef}
               onChange={handleImageChange}
               id="2"
               data-id={myContact._id}
@@ -491,7 +495,7 @@ export const Contacts = () => {
               visible={true}
               height="80"
               width="80"
-              color="#5785FF"
+              color="#9225ff"
               radius="9"
               ariaLabel="three-dots-loading"
               wrapperStyle={{}}
@@ -517,6 +521,7 @@ export const Contacts = () => {
           type="file"
           accept="image/*"
           name="avatar"
+          ref={myRef}
           onChange={handleImageChange}
           id="2"
           data-id={myContact._id}

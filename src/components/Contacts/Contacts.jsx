@@ -30,8 +30,10 @@ import Notiflix from 'notiflix';
 import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/material_blue.css';
 import { useMediaQuery } from 'react-responsive';
+import { useRef } from 'react';
 
 export const Contacts = () => {
+  const myRef = useRef();
    const [date, setDate] = useState(new Date());
   const [isNameEditing, setNameEdit] = useState(false);
   const [nameValue, setNameValue] = useState("");
@@ -199,6 +201,7 @@ export const Contacts = () => {
      if (file) {
        dispatch(updateContactAvatar({ myFile: file, myId: id })); // Store the file under the key "avatar"
      }
+      myRef.current.value = '';
    };
 
   useEffect(() => {
@@ -283,6 +286,7 @@ export const Contacts = () => {
               type="file"
               accept="image/*"
               name="avatar"
+              ref={myRef}
               onChange={handleImageChange}
               id="2"
               data-id={myContact._id}
@@ -522,6 +526,7 @@ export const Contacts = () => {
               type="file"
               accept="image/*"
               name="avatar"
+              ref={myRef}
               onChange={handleImageChange}
               id="2"
               data-id={myContact._id}

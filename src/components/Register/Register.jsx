@@ -32,27 +32,43 @@ const handleSubmit = e => {
     e.target.elements.button.style.boxShadow = 'none';
   }, 1000);
   const form = e.currentTarget;
-  if (form.elements.firstname.value.trim() === '') {
+  /*if (form.elements.firstname.value.trim() === '') {
     Notiflix.Notify.warning('Empty spaces are NOT allowed');
     return;
-  }
-  if (form.elements.lastname.value.trim() === '') {
-    Notiflix.Notify.warning('Empty spaces are NOT allowed');
+  }*/
+  let firstnameValue = form.elements.firstname.value;
+  if ([...firstnameValue].includes(' ')) {
+    Notiflix.Notify.warning('Remove empty spaces from First Name');
     return;
   }
-  if (form.elements.firstname.value.trim() === '') {
+  /*if (form.elements.lastname.value.trim() === '') {
     Notiflix.Notify.warning('Empty spaces are NOT allowed');
     return;
+  }*/
+  let lastnameValue = form.elements.lastname.value;
+  if ([...lastnameValue].includes(' ')) {
+    Notiflix.Notify.warning('Remove empty spaces from Last Name');
+    return;
   }
-  if (form.elements.email.value.trim() === '') {
+  /* if (form.elements.email.value.trim() === '') {
     Notiflix.Notify.warning('Empty spaces are NOT allowed');
+    return;
+  }*/
+  let emailValue = form.elements.email.value;
+  if ([...emailValue].includes(' ')) {
+    Notiflix.Notify.warning('Remove empty spaces from Email');
     return;
   }
   if (form.elements.password.value.length < 6) {
     Notiflix.Notify.warning('Password Must be more than 6 characters');
     return;
   }
-  
+  let passwordValue = form.elements.password.value;
+  if ([...passwordValue].includes(' ')) {
+    Notiflix.Notify.warning('Remove empty spaces from Password');
+    return;
+  }
+
   dispatch(
     register({
       firstName: form.elements.firstname.value,

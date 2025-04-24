@@ -211,6 +211,7 @@ export const updateContactAvatar = createAsyncThunk(
       const res = await axios.patch(`/contacts/avatars/${myId}`, { avatar: myFile }, {headers: { 'Content-Type': 'multipart/form-data' }});
 
       Notiflix.Loading.remove();
+      Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
       Notiflix.Notify.failure('Error, try again');

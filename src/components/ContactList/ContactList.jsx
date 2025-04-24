@@ -165,7 +165,7 @@ export const ContactList = ({ children }) => {
             <b className={css.notification}>Loading Tasks...</b>
           )}
           {!isLoading && !error && (
-            <b className={css.notification}>No Tasks Here!!!</b>
+            <b className={css.notification}>No Appointments Here!!!</b>
           )}
           {!isLoading && error && <b className={css.notification}>Error!!!</b>}
         </div>

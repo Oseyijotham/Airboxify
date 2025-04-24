@@ -20,9 +20,6 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async ({ firstName, lastName, email, phone, password }, thunkAPI) => {
-    alert(
-      'Please wait a bit, first requests can take up to 60 seconds because the backend is hosted with a free plan'
-    );
     Notiflix.Loading.pulse('Registering Your Account...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
@@ -39,10 +36,14 @@ export const register = createAsyncThunk(
       Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure(
-        'Incorrect email or password format, or email has already been registered'
-      );
       Notiflix.Loading.remove();
+      //console.log(error.response.status);
+      console.log(error);
+      if (error.response.status === 409) {
+         Notiflix.Notify.failure(
+           'Email has already been registered'
+         );
+      } 
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -52,9 +53,6 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
-    alert(
-      'Please wait a bit, first requests can take up to 60 seconds because the backend is hosted with a free plan'
-    );
     Notiflix.Loading.pulse('Logging You In...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
@@ -139,7 +137,7 @@ export const getUser = createAsyncThunk(
 export const updateAvatar = createAsyncThunk(
   'auth/updateAvatar',
   async (file, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Your Picture...', {
+    Notiflix.Loading.pulse('Updating Your Avatar...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -147,6 +145,7 @@ export const updateAvatar = createAsyncThunk(
       const res = await axios.patch('/users/avatars', file, { headers: { 'Content-Type': 'multipart/form-data' } });
       //file = '';
       Notiflix.Loading.remove();
+      Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
       //file = "";

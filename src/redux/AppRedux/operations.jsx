@@ -2,6 +2,25 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
+const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  Notiflix.Loading.pulse('Logging You Out...', {
+    svgColor: '#9225ff',
+    fontFamily: 'DM Sans',
+  });
+  try {
+    await axios.get('/users/logout');
+
+    clearAuthHeader();
+    Notiflix.Loading.remove();
+  } catch (error) {
+    Notiflix.Loading.remove();
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -9,20 +28,34 @@ export const fetchContacts = createAsyncThunk(
     try {
       const response = await axios.get('/contacts');
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      Notiflix.Loading.remove();
+      if (error.response.status === 401) {
+                  thunkAPI.dispatch(logOut());
+                  Notiflix.Notify.failure('Invalid Session, login again');
+                } 
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, phone }, thunkAPI) => {
+  async ({ name, dueDate }, thunkAPI) => {
     try {
-      const response = await axios.post(`/contacts/`, { name, phone });
+      const response = await axios.post(`/contacts/`, { name, dueDate });
+      console.log(response.data);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      console.log(error)
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      if (error.response.status === 500) {
+              Notiflix.Notify.warning('Server Timeout, try again');
+            } 
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -214,12 +247,20 @@ export const updateContactAvatar = createAsyncThunk(
       Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure('Error, try again');
       Notiflix.Loading.remove();
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+       if (error.response.status === 500) {
+              Notiflix.Notify.warning('Server Timeout, try again');
+            } 
+    
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 export const updateSortedAllContactAvatar = createAsyncThunk(
   'contacts/updateSortedAllContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
@@ -237,12 +278,20 @@ export const updateSortedAllContactAvatar = createAsyncThunk(
       Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure('Error, try again');
       Notiflix.Loading.remove();
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      if (error.response.status === 500) {
+        Notiflix.Notify.warning('Server Timeout, try again');
+      } 
+      
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 export const updateSortedPendingContactAvatar = createAsyncThunk(
   'contacts/updateSortedPendingContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
@@ -260,12 +309,20 @@ export const updateSortedPendingContactAvatar = createAsyncThunk(
       Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure('Error, try again');
       Notiflix.Loading.remove();
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      if (error.response.status === 500) {
+        Notiflix.Notify.warning('Server Timeout, try again');
+      } 
+      
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 export const updateSortedCompletedContactAvatar = createAsyncThunk(
   'contacts/updateSortedCompletedContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
@@ -283,12 +340,19 @@ export const updateSortedCompletedContactAvatar = createAsyncThunk(
       Notiflix.Loading.remove();
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure('Error, try again');
       Notiflix.Loading.remove();
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      if (error.response.status === 500) {
+        Notiflix.Notify.warning('Server Timeout, try again');
+      } 
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 export const updateSortedPastDueContactAvatar = createAsyncThunk(
   'contacts/updateSortedPastdueContactAvatar',
   async ({ myFile, myId }, thunkAPI) => {
@@ -599,14 +663,14 @@ export const updateSortedPastDueContactEmail = createAsyncThunk(
 
 export const updateContactPhone = createAsyncThunk(
   'contacts/updateContactPhone',
-  async ({ phone, myUpdateId }, thunkAPI) => {
+  async ({ dueDate, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
       const res = await axios.patch(`/contacts/phoneupdate/${myUpdateId}`, {
-        phone,
+        dueDate,
       });
 
       const response = await axios.get('/contacts');
@@ -627,14 +691,14 @@ export const updateContactPhone = createAsyncThunk(
 
 export const updateSortedAllContactPhone = createAsyncThunk(
   'contacts/updateSortedAllContactPhone',
-  async ({ phone, myUpdateId }, thunkAPI) => {
+  async ({ dueDate, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
       const res = await axios.patch(`/contacts/phoneupdate/${myUpdateId}`, {
-        phone,
+        dueDate,
       });
 
       const response = await axios.get('/contacts');
@@ -655,14 +719,14 @@ export const updateSortedAllContactPhone = createAsyncThunk(
 
 export const updateSortedPendingContactPhone = createAsyncThunk(
   'contacts/updateSortedPendingContactPhone',
-  async ({ phone, myUpdateId }, thunkAPI) => {
+  async ({dueDate, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
       const res = await axios.patch(`/contacts/phoneupdate/${myUpdateId}`, {
-        phone,
+        dueDate,
       });
 
       const response = await axios.get('/contacts');
@@ -683,14 +747,14 @@ export const updateSortedPendingContactPhone = createAsyncThunk(
 
 export const updateSortedCompletedContactPhone = createAsyncThunk(
   'contacts/updateSortedCompletedContactPhone',
-  async ({ phone, myUpdateId }, thunkAPI) => {
+  async ({ dueDate, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
       const res = await axios.patch(`/contacts/phoneupdate/${myUpdateId}`, {
-        phone,
+        dueDate,
       });
 
       const response = await axios.get('/contacts');
@@ -711,18 +775,18 @@ export const updateSortedCompletedContactPhone = createAsyncThunk(
 
 export const updateSortedPastDueContactPhone = createAsyncThunk(
   'contacts/updateSortedPastDueContactPhone',
-  async ({ phone, myUpdateId }, thunkAPI) => {
+  async ({ dueDate, myUpdateId }, thunkAPI) => {
     Notiflix.Loading.pulse('Updating Due Date...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
     try {
       const res = await axios.patch(`/contacts/phoneupdate/${myUpdateId}`, {
-        phone,
+        dueDate,
       });
     
       const nowInstDate = new Date();
-      const myDate = new Date(phone);
+      const myDate = new Date(dueDate);
       if (myDate > nowInstDate) {
         thunkAPI.dispatch(closeSortedPastDueModal());
         Notiflix.Notify.success('Due Date moved foward')
@@ -764,7 +828,7 @@ export const fetchSortedAllContactById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`/contacts/${id}`);
-      //console.log (response.data);
+      console.log (response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

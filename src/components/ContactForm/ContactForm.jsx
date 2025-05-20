@@ -48,7 +48,7 @@ export const ContactForm = ({ children }) => {
     }
 
     else {
-      dispatch(addContact({ name: event.target[0].value, phone: date }));
+      dispatch(addContact({ name: event.target[0].value, dueDate: date }));
     }
     //console.log({ name: event.target[0].value, phone: event.target[1].value });
      //event.target.reset();

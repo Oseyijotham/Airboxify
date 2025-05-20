@@ -171,7 +171,7 @@ export const Contacts = () => {
       Notiflix.Notify.failure('Invalid date, choose a date in the future');
     }
     else{
-      dispatch(updateSortedPastDueContactPhone({ phone: date, myUpdateId: idValue }));
+      dispatch(updateSortedPastDueContactPhone({ dueDate: date, myUpdateId: idValue }));
     }
       setPhoneEdit(false);
     
@@ -222,7 +222,7 @@ export const Contacts = () => {
        setDateValue(formattedDate)*/
 
        const userLocale = navigator.language; // e.g., "en-US" or "fr-FR"
-       const myDate = new Date(myContact.phone);
+       const myDate = new Date(myContact.dueDate);
 
       const formatter = new Intl.DateTimeFormat(userLocale, {
         year: 'numeric',
@@ -235,7 +235,7 @@ export const Contacts = () => {
       });
        setDateValue(formatter.format(myDate));
         
-     }, [myContact.phone]);
+     }, [myContact.dueDate]);
 
   //console.log(myVal);
 

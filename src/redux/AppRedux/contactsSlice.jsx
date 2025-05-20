@@ -97,35 +97,35 @@ const contactsSlice = createSlice({
       selectedContact: {
         name: null,
         email: null,
-        phone: null,
+        dueDate: null,
         avatarURL: null,
         groups: null,
       },
       selectedSortedAllContact: {
         name: null,
         email: null,
-        phone: null,
+        dueDate: null,
         avatarURL: null,
         groups: null,
       },
       selectedSortedPendingContact: {
         name: null,
         email: null,
-        phone: null,
+        dueDate: null,
         avatarURL: null,
         groups: null,
       },
       selectedSortedCompletedContact: {
         name: null,
         email: null,
-        phone: null,
+        dueDate: null,
         avatarURL: null,
         groups: null,
       },
       selectedSortedPastDueContact: {
         name: null,
         email: null,
-        phone: null,
+        dueDate: null,
         avatarURL: null,
         groups: null,
       },
@@ -823,7 +823,7 @@ const contactsSlice = createSlice({
 
       .addCase(updateContactPhone.pending, handlePending)
       .addCase(updateContactPhone.fulfilled, (state, action) => {
-        state.contacts.selectedContact.phone = action.payload.newObj.phone;
+        state.contacts.selectedContact.dueDate = action.payload.newObj.dueDate;
         state.contacts.items = action.payload.newRay;
         state.contacts.isLoading = false;
         if (
@@ -856,8 +856,9 @@ const contactsSlice = createSlice({
       //updateSortedAllContactPhone
       .addCase(updateSortedAllContactPhone.pending, handlePending)
       .addCase(updateSortedAllContactPhone.fulfilled, (state, action) => {
-        state.contacts.selectedSortedAllContact.phone =
-          action.payload.newObj.phone;
+        state.contacts.selectedSortedAllContact.dueDate =
+          action.payload.newObj.dueDate;
+        console.log(action.payload.newObj);
         state.contacts.items = action.payload.newRay;
         state.contacts.isLoading = false;
         if (
@@ -890,8 +891,8 @@ const contactsSlice = createSlice({
       //updateSortedPendingContactPhone
       .addCase(updateSortedPendingContactPhone.pending, handlePending)
       .addCase(updateSortedPendingContactPhone.fulfilled, (state, action) => {
-        state.contacts.selectedSortedPendingContact.phone =
-          action.payload.newObj.phone;
+        state.contacts.selectedSortedPendingContact.dueDate =
+          action.payload.newObj.dueDate;
         state.contacts.items = action.payload.newRay;
         state.contacts.isLoading = false;
         if (
@@ -924,8 +925,8 @@ const contactsSlice = createSlice({
 
       .addCase(updateSortedCompletedContactPhone.pending, handlePending)
       .addCase(updateSortedCompletedContactPhone.fulfilled, (state, action) => {
-        state.contacts.selectedSortedCompletedContact.phone =
-          action.payload.newObj.phone;
+        state.contacts.selectedSortedCompletedContact.dueDate =
+          action.payload.newObj.dueDate;
         state.contacts.items = action.payload.newRay;
         state.contacts.isLoading = false;
         if (
@@ -958,8 +959,8 @@ const contactsSlice = createSlice({
 
       .addCase(updateSortedPastDueContactPhone.pending, handlePending)
       .addCase(updateSortedPastDueContactPhone.fulfilled, (state, action) => {
-        state.contacts.selectedSortedPastDueContact.phone =
-          action.payload.newObj.phone;
+        state.contacts.selectedSortedPastDueContact.dueDate =
+          action.payload.newObj.dueDate;
         state.contacts.items = action.payload.newRay;
         state.contacts.isLoading = false;
         if (

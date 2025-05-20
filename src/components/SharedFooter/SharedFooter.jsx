@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import css from './SharedFooter.module.css';
 import { Suspense } from 'react';
+import { ThreeCircles } from 'react-loader-spinner';
 //import { useAuthHook } from '../../customHook/customHook';
 
 export const SharedFooter = () => {
@@ -8,7 +9,23 @@ export const SharedFooter = () => {
   //console.log(All);
   return (
     <>
-      <Suspense fallback={<div className={css.suspense}>Loading page...</div>}>
+      <Suspense
+        fallback={
+          <div className={css.suspense}>
+            {' '}
+            <ThreeCircles
+              visible={true}
+              height="80"
+              width="80"
+              color="#9225ff"
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass={css.loader}
+            />
+          </div>
+        }
+      >
         <Outlet />
       </Suspense>
       <div className={css.footer}>

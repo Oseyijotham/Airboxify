@@ -225,7 +225,7 @@ export const Home = () => {
                 setIsTwoHovered(false);
               }}
             >
-              <Link to="/dog_ward" className={css.movieInfo}>
+              <Link to="/sharedLayout/profile" className={css.movieInfo}>
                 <div className={css.catOverlay}>
                   <img
                     className={css.movieImage}

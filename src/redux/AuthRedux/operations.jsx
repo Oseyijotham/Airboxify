@@ -2,11 +2,11 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
-//axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
 //axios.defaults.baseURL = 'https://oasis-tasks-backend.onrender.com/api';
 
-axios.defaults.baseURL = 'https://airboxify-backend.onrender.com/api';
+//axios.defaults.baseURL = 'https://airboxify-backend.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -37,12 +37,13 @@ export const register = createAsyncThunk(
       return res.data;
     } catch (error) {
       Notiflix.Loading.remove();
-      //console.log(error.response.status);
-      console.log(error);
       if (error.response.status === 409) {
          Notiflix.Notify.failure(
            'Email has already been registered'
          );
+      } 
+      if (error.response.status === 500) {
+        Notiflix.Notify.warning('Server Timeout');
       } 
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -65,8 +66,13 @@ export const logIn = createAsyncThunk(
       //console.log(res.data);
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect email or password');
-      Notiflix.Loading.remove();
+          Notiflix.Loading.remove();
+          if (error.response.status === 401) {
+            Notiflix.Notify.failure('Incorrect Email or Password');
+      } 
+      if (error.response.status === 500) {
+        Notiflix.Notify.warning('Server Timeout');
+      } 
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -149,7 +155,14 @@ export const updateAvatar = createAsyncThunk(
       return res.data;
     } catch (error) {
       //file = "";
+      if (error.response.status === 401) {
+                        thunkAPI.dispatch(logOut());
+                        Notiflix.Notify.failure('Invalid Session, login again');
+                      } 
       Notiflix.Loading.remove();
+      if (error.response.status === 500) {
+        Notiflix.Notify.warning('Server Timeout, try again');
+      } 
       return thunkAPI.rejectWithValue(error.message);
     }
   }

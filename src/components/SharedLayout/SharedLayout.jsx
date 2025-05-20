@@ -24,6 +24,7 @@ import clsx from 'clsx';
 import css from './SharedLayout.module.css';
 import { Link } from 'react-router-dom';
 import { selectUser } from '../../redux/AuthRedux/selectors';
+import { ThreeCircles } from 'react-loader-spinner';
 
 
 export const SharedLayout = () => {
@@ -160,7 +161,16 @@ export const SharedLayout = () => {
         </div>
       </div>
 
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense fallback={<div><ThreeCircles
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#9225ff"
+                    radius="9"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClass={css.loader}
+                  /></div>}>
         <Outlet />
       </Suspense>
     </Container>

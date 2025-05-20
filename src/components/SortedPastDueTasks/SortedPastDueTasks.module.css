@@ -60,7 +60,10 @@
 
 @media screen and (min-width:768px){
   .contactsDetailsHide{
-   display: block;
+    display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
   }
 
 }

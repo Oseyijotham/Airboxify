@@ -7,9 +7,13 @@ import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { RestrictedRouteRegister } from '../RestrictedRouteRegister/RestrictedRouteRegister';
 import { RestrictedRouteLogin } from '../RestrictedRouteLogin/RestrictedRouteLogin';
 import { RestrictedRouteNav } from '../RestrictedRouteNav/RestrictedRouteNav';
-import { refreshUser, getUser } from '../../redux/AuthRedux/operations';
+import { refreshUser, getUser, logOut } from '../../redux/AuthRedux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuthHook } from '../../customHook/customHook'
+import { jwtDecode } from 'jwt-decode';
+import Notiflix from 'notiflix';
+import { ThreeCircles } from 'react-loader-spinner';
+import css from '../SortedAllTasks/SortedAllTasks.module.css';
 
 
 const Register = lazy(() => import('../Register/Register'));
@@ -24,16 +28,50 @@ const SortedPastDueTasks = lazy(() => import('../SortedPastDueTasks/SortedPastDu
 const Profile = lazy(() => import('../Profile/Profile'));
 
 export const App = () => {
-  const { isRefreshing } = useAuthHook();
+  const { token, isRefreshing} = useAuthHook();
   const dispatch = useDispatch();
-  
 
-    useEffect(() => {
-      dispatch(refreshUser());
-      //dispatch(getUser());
-    }, [dispatch]);
+  // Effect to check and decode token
+  /*By the way the token is null in the initial state so when the user logs in the value of the token changes which triggers the
+  useEffect hook below*/
+  useEffect(() => {
+    if (token) {
+      
+        const interval = setInterval(() => {
+          const { exp } = jwtDecode(token); // Decode token to get expiry
+          const currentTime = Math.floor(Date.now() / 1000);;
+
+          if (exp - currentTime <= 120) {
+            Notiflix.Notify.warning('Session timeout');
+            dispatch(logOut()); // Force logout 60 seconds or less before token expires
+            clearInterval(interval); // Cleanup
+          }
+          console.log("check")
+        }, 60 * 1000); // Check every 1 minute
+      
+    
+    
+
+    }
+  }, [token, dispatch]);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+    //dispatch(getUser());
+  }, [dispatch]);
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <div>
+      <ThreeCircles
+        visible={true}
+        height="80"
+        width="80"
+        color="#9225ff"
+        radius="9"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass={css.loader}
+      />
+    </div>
   ) : (
     <Routes>
       <Route path="/" element={<SharedFooter />}>
@@ -58,6 +96,10 @@ export const App = () => {
             element={<PrivateRoute redirectTo="/" component={<Home />} />}
           />
           <Route
+            path="*"
+            element={<PrivateRoute redirectTo="/" component={<Home />} />}
+          />
+          <Route
             path="tasks"
             element={<PrivateRoute redirectTo="/" component={<Contacts />} />}
           />
@@ -65,9 +107,7 @@ export const App = () => {
             <Route
               index
               element={
-                <RestrictedRouteNav
-                  component={<SharedSortingLayout />}
-                />
+                <RestrictedRouteNav component={<SharedSortingLayout />} />
               }
             />
 

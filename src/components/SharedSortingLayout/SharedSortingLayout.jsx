@@ -8,7 +8,9 @@ import { Suspense } from 'react';
 import {
 setSortAll, setSortPending, setSortFulfilled, setSortPastDue
 } from '../../redux/AuthRedux/operations';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import css from './SharedSortingLayout.module.css';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export const SharedSortingLayout = () => {
   const dispatch = useDispatch();
@@ -44,7 +46,22 @@ export const SharedSortingLayout = () => {
         </Link>
       </Header>
 
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense
+        fallback={
+          <div className={css.childWrapper}>
+            <ThreeCircles
+              visible={true}
+              height="80"
+              width="80"
+              color="#9225ff"
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass={css.loader}
+            />
+          </div>
+        }
+      >
         <Outlet />
       </Suspense>
     </Container>

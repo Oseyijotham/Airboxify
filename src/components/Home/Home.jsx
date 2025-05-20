@@ -131,9 +131,7 @@ export const Home = () => {
                   />
                   <p className={css.catWardDescription}>
                     <span className={css.catWardDescriptionbackground}>
-                      Welcome to Petpal's Cat Ward! Answer a few questions, and
-                      we'll match you with the perfect cat breeds that fit your
-                      lifestyle and preferences
+                      Book smarter, not harder.
                     </span>
                   </p>
                 </div>
@@ -183,9 +181,7 @@ export const Home = () => {
                   />
                   <p className={css.catWardDescription}>
                     <span className={css.catWardDescriptionbackground}>
-                      Welcome to Petpal's Cat Ward! Answer a few questions, and
-                      we'll match you with the perfect cat breeds that fit your
-                      lifestyle and preferences
+                      From messy to managed in a click
                     </span>
                   </p>
                 </div>
@@ -235,9 +231,7 @@ export const Home = () => {
                   />
                   <p className={css.catWardDescription}>
                     <span className={css.catWardDescriptionbackground}>
-                      Welcome to Petpal's Cat Ward! Answer a few questions, and
-                      we'll match you with the perfect cat breeds that fit your
-                      lifestyle and preferences
+                      Get your insights at a glance
                     </span>
                   </p>
                 </div>

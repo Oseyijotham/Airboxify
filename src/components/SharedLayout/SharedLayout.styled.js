@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-grow: 1;
   margin: 0 auto;
   padding: 0 5px;
-  width:100%;
 
   @media (min-width: 768px) {
     width: 768px;

@@ -25,8 +25,6 @@ background-blend-mode: overlay; /* Optional: blends the color with the image */
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-  align-items: center;
-  justify-content: center;
 }
 
 

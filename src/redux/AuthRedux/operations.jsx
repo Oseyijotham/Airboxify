@@ -2,9 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
-//axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
-axios.defaults.baseURL = 'https://airboxify-backend.onrender.com/api';
+//axios.defaults.baseURL = 'https://airboxify-backend.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -35,15 +35,10 @@ export const register = createAsyncThunk(
       return res.data;
     } catch (error) {
       Notiflix.Loading.remove();
-      if (error.response.status === 409) {
-         Notiflix.Notify.failure(
-           'Email has already been registered'
-         );
-      } 
-      if (error.response.status === 500) {
-        Notiflix.Notify.warning('Server Timeout');
-      } 
-      return thunkAPI.rejectWithValue(error.message);
+      
+        Notiflix.Notify.failure(error.response.data.error.message);
+     
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -64,14 +59,10 @@ export const logIn = createAsyncThunk(
       //console.log(res.data);
       return res.data;
     } catch (error) {
-          Notiflix.Loading.remove();
-          if (error.response.status === 401) {
-            Notiflix.Notify.failure('Incorrect Email or Password');
-      } 
-      if (error.response.status === 500) {
-        Notiflix.Notify.warning('Server Timeout');
-      } 
-      return thunkAPI.rejectWithValue(error.message);
+      Notiflix.Loading.remove();
+  
+        Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -89,7 +80,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
      Notiflix.Loading.remove();
   } catch (error) {
     Notiflix.Loading.remove();
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(null);
   }
 });
 
@@ -112,7 +103,7 @@ export const refreshUser = createAsyncThunk(
       return res.data;
     } catch (error) {
        thunkAPI.dispatch(logOut());
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -132,8 +123,9 @@ export const getUser = createAsyncThunk(
       const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
-      window.location.reload();
-      return thunkAPI.rejectWithValue(error.message);
+      //window.location.reload();
+      thunkAPI.dispatch(logOut());
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -152,16 +144,13 @@ export const updateAvatar = createAsyncThunk(
       Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
-      //file = "";
-      if (error.response.status === 401) {
-                        thunkAPI.dispatch(logOut());
-                        Notiflix.Notify.failure('Invalid Session, login again');
-                      } 
       Notiflix.Loading.remove();
-      if (error.response.status === 500) {
-        Notiflix.Notify.warning('Server Timeout, try again');
-      } 
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+              thunkAPI.dispatch(logOut());
+              Notiflix.Notify.failure('Invalid Session, login again');
+            }
+      Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -187,3 +176,7 @@ export const setSortPastDue = createAsyncThunk(
     return true;
   }
 );
+
+export const setScheduler = createAsyncThunk('setScheduler/display', async () => {
+  return true;
+});

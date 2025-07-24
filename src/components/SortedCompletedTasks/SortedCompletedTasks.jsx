@@ -29,8 +29,11 @@ import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/material_blue.css';
 import { Suspense } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useRef } from 'react';
 
 export const Contacts = () => {
+  const [inputKey, setInputKey] = useState(Date.now());
+  const sectionRef = useRef(null);
    const [date, setDate] = useState(new Date());
   const [isNameEditing, setNameEdit] = useState(false);
   const [nameValue, setNameValue] = useState("");
@@ -60,21 +63,22 @@ export const Contacts = () => {
   };
 
   const handleNameChange = evt => { 
-    setNameValue(evt.target.value);
       const wrd = evt.target.value;
-      let hasExceeded = false;
-      let nameRay;
-      if (wrd.length > 45) {
-        nameRay = [...wrd];
-        nameRay.pop();
-        evt.target.value = nameRay.join('');
-        hasExceeded = true;
-      }
-      if (hasExceeded === true) {
-        Notiflix.Notify.warning('Maximum Charater limit is 45');
-      }
-    /*const id = evt.currentTarget.getAttribute('data-id');
-    setIdValue(id);*/
+           let hasExceeded = false;
+           let nameRay;
+           if (wrd.length > 30) {
+             nameRay = [...wrd];
+             nameRay.pop();
+             evt.target.value = nameRay.join('');
+             setNameValue(evt.target.value);
+             hasExceeded = true;
+       }
+           else {
+             setNameValue(evt.target.value);
+       }
+           if (hasExceeded === true) {
+             Notiflix.Notify.warning('Maximum Charater limit is 30');
+           }
   }
 
   const handleNameEdit = evt => { 
@@ -198,6 +202,7 @@ export const Contacts = () => {
      if (file) {
        dispatch(updateSortedCompletedContactAvatar({ myFile: file, myId: id })); // Store the file under the key "avatar"
      }
+     setInputKey(Date.now());
    };
 
   useEffect(() => {
@@ -238,6 +243,16 @@ export const Contacts = () => {
        setDateValue(formatter.format(myDate));
         
      }, [myContact.dueDate]);
+  
+   useEffect(() => {
+     if (isOpenModal === true) {
+       const scrollTimer = setTimeout(() => {
+         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+       }, 1000); // 1250ms delay
+
+       return () => clearTimeout(scrollTimer); // Cleanup on unmount
+     }
+   }, [isOpenModal]);
 
   //console.log(myVal);
 
@@ -247,7 +262,7 @@ export const Contacts = () => {
         [css.contactsWrapperSpace]: isOpenModal && isDesktop,
       })}
     >
-      {isOpenModal && isMobileOrTab && (
+      {isMobileOrTab && (
         <div
           className={clsx(css.backdrop, {
             [css.backdropIsHidden]: isOpenCompletedMobileAndTabModal,
@@ -286,12 +301,16 @@ export const Contacts = () => {
               type="file"
               accept="image/*"
               name="avatar"
+              key={inputKey}
               onChange={handleImageChange}
-              id="2"
+              id="completedMobileTab"
               data-id={myContact._id}
             />
-            <label className={css.detailsImageInput} htmlFor="2">
-              Update Task Image +
+            <label
+              className={css.detailsImageInput}
+              htmlFor="completedMobileTab"
+            >
+              Update Customer Avatar +
             </label>
             <ul className={css.detailsWrapper}>
               <li className={css.detailsItem}>
@@ -347,14 +366,14 @@ export const Contacts = () => {
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Booking Details:</span>{' '}
+                    <span className={css.details}>Email:</span>{' '}
                     {isEmailEditing === false ? (
                       <pre className={css.detailsDetailsVal}>
                         <i className={css.detail}>{myContact.email}</i>
                         {console.log(myContact.email)}
                       </pre>
                     ) : (
-                      <textarea
+                      <input
                         type="text"
                         className={css.detailsDetailsValInput}
                         required
@@ -363,7 +382,7 @@ export const Contacts = () => {
                         name="email"
                         title="Enter the details of your task"
                         defaultValue={myContact.email}
-                      ></textarea>
+                      />
                     )}
                   </span>
                   <span className={css.buttonWrapper}>
@@ -483,6 +502,7 @@ export const Contacts = () => {
         </b>
       )}
       <div
+        ref={sectionRef}
         className={clsx(css.contactsDetailsHide, {
           [css.contactsDetailsShow]: isOpenModal && isDesktop,
         })}
@@ -519,12 +539,13 @@ export const Contacts = () => {
           type="file"
           accept="image/*"
           name="avatar"
+          key={inputKey}
           onChange={handleImageChange}
-          id="2"
+          id="completedDesktop"
           data-id={myContact._id}
         />
-        <label className={css.detailsImageInput} htmlFor="2">
-          Update Task Image +
+        <label className={css.detailsImageInput} htmlFor="completedDesktop">
+          Update Customer Avatar +
         </label>
         <ul className={css.detailsWrapper}>
           <li className={css.detailsItem}>
@@ -577,13 +598,13 @@ export const Contacts = () => {
           <li className={css.detailsItem}>
             <span className={css.detailsCover}>
               <span className={css.detailsInfo}>
-                <span className={css.details}>Booking Details:</span>{' '}
+                <span className={css.details}>Email:</span>{' '}
                 {isEmailEditing === false ? (
                   <pre className={css.detailsDetailsVal}>
                     <i className={css.detail}>{myContact.email}</i>
                   </pre>
                 ) : (
-                  <textarea
+                  <input
                     type="text"
                     className={css.detailsDetailsValInput}
                     required
@@ -592,7 +613,7 @@ export const Contacts = () => {
                     name="email"
                     title="Enter the details of your task"
                     defaultValue={myContact.email}
-                  ></textarea>
+                  />
                 )}
               </span>
               <span className={css.buttonWrapper}>

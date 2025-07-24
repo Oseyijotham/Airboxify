@@ -9,7 +9,8 @@ import {
   setSortAll,
   setSortPending,
   setSortFulfilled,
-  setSortPastDue
+  setSortPastDue,
+  setScheduler,
 } from './operations';
 
 const initialState = {
@@ -21,7 +22,8 @@ const initialState = {
   all: false,
   pending: false,
   fulfilled: false,
-  pastDue:false
+  pastDue: false,
+  scheduler: false
 };
 
 const authSlice = createSlice({
@@ -79,24 +81,35 @@ const authSlice = createSlice({
         state.pending = false;
         state.fulfilled = false;
         state.pastDue = false;
+        state.scheduler = false;
       })
       .addCase(setSortPending.fulfilled, (state, action) => {
         state.all = false;
         state.pending = action.payload;
         state.fulfilled = false;
         state.pastDue = false;
+        state.scheduler = false;
       })
       .addCase(setSortFulfilled.fulfilled, (state, action) => {
         state.all = false;
         state.pending = false;
         state.fulfilled = action.payload;
         state.pastDue = false;
+        state.scheduler = false;
       })
-    .addCase(setSortPastDue.fulfilled, (state, action) => {
+      .addCase(setSortPastDue.fulfilled, (state, action) => {
         state.all = false;
         state.pending = false;
         state.fulfilled = false;
         state.pastDue = action.payload;
+        state.scheduler = false;
+      })
+      .addCase(setScheduler.fulfilled, (state, action) => {
+        state.all = false;
+        state.pending = false;
+        state.fulfilled = false;
+        state.pastDue = false;
+        state.scheduler = action.payload;
       });
   },
 });

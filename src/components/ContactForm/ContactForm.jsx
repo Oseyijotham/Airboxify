@@ -1,5 +1,5 @@
-import { addContact } from '../../redux/AppRedux/operations';
-import { selectContacts} from '../../redux/AppRedux/selectors';
+import { addContact, saveCustomerName } from '../../redux/AppRedux/operations';
+import { selectContacts,selectCustomerName} from '../../redux/AppRedux/selectors';
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -16,6 +16,7 @@ export const ContactForm = ({ children }) => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
+  const customerName = useSelector(selectCustomerName);
 
   const handleButtonPress = evt => {
     evt.target.style.boxShadow = 'inset 0 0 10px 5px rgba(0, 0, 0, 0.3)';
@@ -58,15 +59,16 @@ export const ContactForm = ({ children }) => {
     const wrd = evt.target.value
     let hasExceeded = false;
     let nameRay;
-    if (wrd.length > 45) {
+    if (wrd.length > 30) {
       nameRay = [...wrd];
       nameRay.pop()
       evt.target.value = nameRay.join("");
       hasExceeded = true;
     }
     if ((hasExceeded === true)) {
-      Notiflix.Notify.warning('Maximum Charater limit is 45');
+      Notiflix.Notify.warning('Maximum Charater limit is 30');
     }
+    dispatch(saveCustomerName(evt.target.value));
   }
 
   return (
@@ -77,15 +79,16 @@ export const ContactForm = ({ children }) => {
           <span className={css.formLabel}>Customer Name:</span>
           <input
             type="text"
-            placeholder="Enter Task Title"
+            placeholder="Enter Customer Name"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Enter Task Title"
+            title="Enter Customer Name"
             required
             autoComplete="off"
             id={contactNameId}
             className={css.formInput}
             onChange={handleChange}
+            value={customerName}
           />
         </label>
         <label>
@@ -94,23 +97,15 @@ export const ContactForm = ({ children }) => {
           <Flatpickr
             data-enable-time
             value={date}
-            onChange={(selectedDates) => {
-            const nowDate = new Date();
-            if (selectedDates[0] <= nowDate) {
-            Notiflix.Notify.warning(
-            'Choose a date in the future'
-              )
-            }
-          
-            else {
-            Notiflix.Notify.success(
-            'Due Date Selected'
-            )
-                                      
-            }
-            setDate(selectedDates[0]);
-                                   
-            }}            
+            onChange={selectedDates => {
+              const nowDate = new Date();
+              if (selectedDates[0] <= nowDate) {
+                Notiflix.Notify.warning('Choose a date in the future');
+              } else {
+                Notiflix.Notify.success('Due Date Selected');
+              }
+              setDate(selectedDates[0]);
+            }}
             options={{
               minuteIncrement: 1, // Set minute increments to 1
             }}
@@ -122,6 +117,7 @@ export const ContactForm = ({ children }) => {
                 required
                 id={contactNumberId}
                 name="myDate"
+                title="Enter Due Date"
               />
             )}
           />

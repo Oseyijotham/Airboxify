@@ -44,7 +44,7 @@
 
 @media screen and (min-width:1279px){
 .contactsList {
-height: 380px;
+height: 305px;
 }
 }
 
@@ -81,12 +81,10 @@ height: 380px;
   border: 2px solid #fff;
   padding: 5px;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: start;
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
-  width: 100%;
+  width: 120px;
   overflow: hidden;
 }
 
@@ -94,6 +92,18 @@ height: 380px;
 .contactsPhone{
 font-size: 13px;
 }
+}
+
+@media (min-width: 768px) {
+  .contactsPhone{
+  width: 350px;
+}
+}
+
+@media (min-width: 1280px) {
+  .contactsPhone{
+    width: 100%;
+  }
 }
 
 .contactsItemWrapper{

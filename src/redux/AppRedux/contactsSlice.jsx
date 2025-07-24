@@ -54,6 +54,7 @@ import {
   closeCompletedMobileAndTabModal,
   openPastDueMobileAndTabModal,
   closePastDueMobileAndTabModal,
+  saveCustomerName,
 } from './operations';
 
 const handlePending = state => {
@@ -133,6 +134,7 @@ const contactsSlice = createSlice({
       isSlideError: false,
       filterUpLimit: 4,
       filterDownLimit: 0,
+      customerName:null,
     },
   },
   extraReducers: builder => {
@@ -1037,6 +1039,10 @@ const contactsSlice = createSlice({
 
       .addCase(closePastDueMobileAndTabModal.fulfilled, (state, action) => {
         state.contacts.openMyPastDueMobileAndTabModal = action.payload;
+      })
+    
+      .addCase(saveCustomerName.fulfilled, (state, action) => {
+        state.contacts.customerName = action.payload;
       });
   },
 });

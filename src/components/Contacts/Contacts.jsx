@@ -33,7 +33,9 @@ import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 
 export const Contacts = () => {
+  const [inputKey, setInputKey] = useState(Date.now());
   const myRef = useRef();
+  const sectionRef = useRef(null);
    const [date, setDate] = useState(new Date());
   const [isNameEditing, setNameEdit] = useState(false);
   const [nameValue, setNameValue] = useState("");
@@ -63,19 +65,23 @@ export const Contacts = () => {
   };
 
   const handleNameChange = evt => { 
-    setNameValue(evt.target.value);
-      const wrd = evt.target.value;
-      let hasExceeded = false;
-      let nameRay;
-      if (wrd.length > 30) {
-        nameRay = [...wrd];
-        nameRay.pop();
-        evt.target.value = nameRay.join('');
-        hasExceeded = true;
-      }
-      if (hasExceeded === true) {
-        Notiflix.Notify.warning('Maximum Charater limit is 30');
-      }
+     
+        const wrd = evt.target.value;
+        let hasExceeded = false;
+        let nameRay;
+        if (wrd.length > 30) {
+          nameRay = [...wrd];
+          nameRay.pop();
+          evt.target.value = nameRay.join('');
+          setNameValue(evt.target.value);
+          hasExceeded = true;
+    }
+        else {
+          setNameValue(evt.target.value);
+    }
+        if (hasExceeded === true) {
+          Notiflix.Notify.warning('Maximum Charater limit is 30');
+        }
     /*const id = evt.currentTarget.getAttribute('data-id');
     setIdValue(id);*/
   }
@@ -201,7 +207,7 @@ export const Contacts = () => {
      if (file) {
        dispatch(updateContactAvatar({ myFile: file, myId: id })); // Store the file under the key "avatar"
      }
-      myRef.current.value = '';
+      setInputKey(Date.now());
    };
 
   useEffect(() => {
@@ -210,11 +216,20 @@ export const Contacts = () => {
 
   useEffect(() => {
     setEmailValue(myContact.email);
+    setNameEdit(false);
+    setEmailEdit(false);
+    setPhoneEdit(false);
   }, [myContact.email]);
+
 
    useEffect(() => {
      setNameValue(myContact.name);
+     setNameEdit(false);
+     setEmailEdit(false);
+     setPhoneEdit(false);
    }, [myContact.name]);
+  
+  useEffect(()=>{if(isOpenModal === true){sectionRef.current?.scrollIntoView({ behavior: 'smooth' });}},[isOpenModal])
   
      useEffect(() => {
        //setPhoneValue(myContact.phone);
@@ -247,7 +262,7 @@ export const Contacts = () => {
 
   return (
     <div className={clsx(css.coverWrapper, {})}>
-      {isOpenModal && isMobileOrTab && (
+      {isMobileOrTab && (
         <div
           className={clsx(css.backdrop, {
             [css.backdropIsHidden]: isOpenMobileAndTabModal,
@@ -286,13 +301,16 @@ export const Contacts = () => {
               type="file"
               accept="image/*"
               name="avatar"
-              ref={myRef}
+              key={inputKey}
               onChange={handleImageChange}
-              id="2"
+              id="schedulerMobileTab"
               data-id={myContact._id}
             />
-            <label className={css.detailsImageInput} htmlFor="2">
-              Update Customer Image +
+            <label
+              className={css.detailsImageInput}
+              htmlFor="schedulerMobileTab"
+            >
+              Update Customer Avatar +
             </label>
             <ul className={css.detailsWrapper}>
               <li className={css.detailsItem}>
@@ -348,14 +366,14 @@ export const Contacts = () => {
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Booking Details:</span>{' '}
+                    <span className={css.details}>Email:</span>{' '}
                     {isEmailEditing === false ? (
                       <pre className={css.detailsDetailsVal}>
                         <i className={css.detail}>{myContact.email}</i>
                         {console.log(myContact.email)}
                       </pre>
                     ) : (
-                      <textarea
+                      <input
                         type="text"
                         className={css.detailsDetailsValInput}
                         required
@@ -364,7 +382,7 @@ export const Contacts = () => {
                         name="email"
                         title="Enter the details of your task"
                         defaultValue={myContact.email}
-                      ></textarea>
+                      />
                     )}
                   </span>
                   <span className={css.buttonWrapper}>
@@ -490,6 +508,7 @@ export const Contacts = () => {
             </b>
           )}
           <div
+            ref={sectionRef}
             className={clsx(css.contactsDetailsHide, {
               [css.contactsDetailsShow]: isOpenModal && isDesktop,
             })}
@@ -526,13 +545,13 @@ export const Contacts = () => {
               type="file"
               accept="image/*"
               name="avatar"
-              ref={myRef}
+              key={inputKey}
               onChange={handleImageChange}
-              id="2"
+              id="schedulerDesktop"
               data-id={myContact._id}
             />
-            <label className={css.detailsImageInput} htmlFor="2">
-              Update Task Image +
+            <label className={css.detailsImageInput} htmlFor="schedulerDesktop">
+              Update Customer Avatar +
             </label>
             <ul className={css.detailsWrapper}>
               <li className={css.detailsItem}>
@@ -588,23 +607,23 @@ export const Contacts = () => {
               <li className={css.detailsItem}>
                 <span className={css.detailsCover}>
                   <span className={css.detailsInfo}>
-                    <span className={css.details}>Booking Details:</span>{' '}
+                    <span className={css.details}>Email:</span>{' '}
                     {isEmailEditing === false ? (
                       <pre className={css.detailsDetailsVal}>
                         <i className={css.detail}>{myContact.email}</i>
                         {console.log(myContact.email)}
                       </pre>
                     ) : (
-                      <textarea
+                      <input
                         type="text"
                         className={css.detailsDetailsValInput}
                         required
                         onChange={handleEmailChange}
                         data-id={myContact._id}
                         name="email"
-                        title="Enter the details of your task"
+                        title="Enter customer email"
                         defaultValue={myContact.email}
-                      ></textarea>
+                      />
                     )}
                   </span>
                   <span className={css.buttonWrapper}>

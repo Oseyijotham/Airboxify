@@ -18,7 +18,7 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     Notiflix.Loading.remove();
   } catch (error) {
     Notiflix.Loading.remove();
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(null);
   }
 });
 
@@ -34,7 +34,7 @@ export const fetchContacts = createAsyncThunk(
                   thunkAPI.dispatch(logOut());
                   Notiflix.Notify.failure('Invalid Session, login again');
                 } 
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -44,18 +44,19 @@ export const addContact = createAsyncThunk(
   async ({ name, dueDate }, thunkAPI) => {
     try {
       const response = await axios.post(`/contacts/`, { name, dueDate });
-      console.log(response.data);
+      //console.log(response.data);
       return response.data;
     } catch (error) {
-      console.log(error)
+      //console.log(error)
+      
+      Notiflix.Notify.failure(error.response.data.error.message);
+      
       if (error.response.status === 401) {
         thunkAPI.dispatch(logOut());
         Notiflix.Notify.failure('Invalid Session, login again');
       } 
-      if (error.response.status === 500) {
-              Notiflix.Notify.warning('Server Timeout, try again');
-            } 
-      return thunkAPI.rejectWithValue(error.message);
+      
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -139,7 +140,6 @@ export const openModal = createAsyncThunk('modalAndTabModal/open', async () => {
 export const closeModal = createAsyncThunk(
   'modal/close',
   async () => {
-    //console.log("Now");
     return false;
   }
 );
@@ -154,7 +154,6 @@ export const openSortedAllModal = createAsyncThunk(
 export const closeSortedAllModal = createAsyncThunk(
   'modal/closeAll',
   async () => {
-    //console.log("Now");
     return false;
   }
 );
@@ -169,7 +168,6 @@ export const openSortedPendingModal = createAsyncThunk(
 export const closeSortedPendingModal = createAsyncThunk(
   'modal/closePending',
   async () => {
-    //console.log("Now");
     return false;
   }
 );
@@ -184,7 +182,6 @@ export const openSortedCompletedModal = createAsyncThunk(
 export const closeSortedCompletedModal = createAsyncThunk(
   'modal/closeCompleted',
   async () => {
-    //console.log("Now");
     return false;
   }
 );
@@ -199,7 +196,6 @@ export const openSortedPastDueModal = createAsyncThunk(
 export const closeSortedPastDueModal = createAsyncThunk(
   'modal/closePastDue',
   async () => {
-    //console.log("Now");
     return false;
   }
 );
@@ -252,11 +248,9 @@ export const updateContactAvatar = createAsyncThunk(
         thunkAPI.dispatch(logOut());
         Notiflix.Notify.failure('Invalid Session, login again');
       } 
-       if (error.response.status === 500) {
-              Notiflix.Notify.warning('Server Timeout, try again');
-            } 
+      Notiflix.Notify.failure(error.response.data.error.message); 
     
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -276,6 +270,7 @@ export const updateSortedAllContactAvatar = createAsyncThunk(
       );
 
       Notiflix.Loading.remove();
+      Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
       Notiflix.Loading.remove();
@@ -283,11 +278,9 @@ export const updateSortedAllContactAvatar = createAsyncThunk(
         thunkAPI.dispatch(logOut());
         Notiflix.Notify.failure('Invalid Session, login again');
       }
-      if (error.response.status === 500) {
-        Notiflix.Notify.warning('Server Timeout, try again');
-      } 
+     Notiflix.Notify.failure(error.response.data.error.message);
       
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -307,6 +300,7 @@ export const updateSortedPendingContactAvatar = createAsyncThunk(
       );
 
       Notiflix.Loading.remove();
+      Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
       Notiflix.Loading.remove();
@@ -314,11 +308,9 @@ export const updateSortedPendingContactAvatar = createAsyncThunk(
         thunkAPI.dispatch(logOut());
         Notiflix.Notify.failure('Invalid Session, login again');
       }
-      if (error.response.status === 500) {
-        Notiflix.Notify.warning('Server Timeout, try again');
-      } 
-      
-      return thunkAPI.rejectWithValue(error.message);
+      Notiflix.Notify.failure(error.response.data.error.message);
+
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -338,6 +330,7 @@ export const updateSortedCompletedContactAvatar = createAsyncThunk(
       );
 
       Notiflix.Loading.remove();
+      Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
       Notiflix.Loading.remove();
@@ -345,10 +338,9 @@ export const updateSortedCompletedContactAvatar = createAsyncThunk(
         thunkAPI.dispatch(logOut());
         Notiflix.Notify.failure('Invalid Session, login again');
       }
-      if (error.response.status === 500) {
-        Notiflix.Notify.warning('Server Timeout, try again');
-      } 
-      return thunkAPI.rejectWithValue(error.message);
+      Notiflix.Notify.failure(error.response.data.error.message);
+
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -368,11 +360,17 @@ export const updateSortedPastDueContactAvatar = createAsyncThunk(
       );
 
       Notiflix.Loading.remove();
+      Notiflix.Notify.success('Avatar Updated, reflecting now...');
       return res.data;
     } catch (error) {
-      Notiflix.Notify.failure('Error, try again');
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      Notiflix.Notify.failure(error.response.data.error.message);
+
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -399,11 +397,13 @@ export const updateContactName = createAsyncThunk(
         newRay: response.data
       };
     } catch (error) {
-      Notiflix.Notify.failure(
-        'Incorrect Input Format'
-      );
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -429,9 +429,13 @@ export const updateSortedAllContactName = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -457,9 +461,13 @@ export const updateSortedPendingContactName = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -485,9 +493,13 @@ export const updateSortedCompletedContactName = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -513,9 +525,13 @@ export const updateSortedPastDueContactName = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -524,7 +540,7 @@ export const updateSortedPastDueContactName = createAsyncThunk(
 export const updateContactEmail = createAsyncThunk(
   'contacts/updateContactEmail',
   async ({ email, myUpdateId }, thunkAPI) => {
-    Notiflix.Loading.pulse('Updating Appointment Details...', {
+    Notiflix.Loading.pulse('Updating Customer Email...', {
       svgColor: '#9225ff',
       fontFamily: 'DM Sans',
     });
@@ -542,9 +558,13 @@ export const updateContactEmail = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      } 
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -570,9 +590,13 @@ export const updateSortedAllContactEmail = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -598,9 +622,13 @@ export const updateSortedPendingContactEmail = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -626,9 +654,13 @@ export const updateSortedCompletedContactEmail = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -654,9 +686,13 @@ export const updateSortedPastDueContactEmail = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -682,9 +718,13 @@ export const updateContactPhone = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
-      Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+    Notiflix.Notify.failure(error.response.data.error.message);
+    Notiflix.Loading.remove();
+    if (error.response.status === 401) {
+      thunkAPI.dispatch(logOut());
+      Notiflix.Notify.failure('Invalid Session, login again');
+    }
+    return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -710,9 +750,13 @@ export const updateSortedAllContactPhone = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -738,9 +782,13 @@ export const updateSortedPendingContactPhone = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -766,9 +814,13 @@ export const updateSortedCompletedContactPhone = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -789,7 +841,7 @@ export const updateSortedPastDueContactPhone = createAsyncThunk(
       const myDate = new Date(dueDate);
       if (myDate > nowInstDate) {
         thunkAPI.dispatch(closeSortedPastDueModal());
-        Notiflix.Notify.success('Due Date moved foward')
+        Notiflix.Notify.success('Due Date moved foward, appointment status is now PENDING')
       }
 
       const response = await axios.get('/contacts');
@@ -801,9 +853,13 @@ export const updateSortedPastDueContactPhone = createAsyncThunk(
         newRay: response.data,
       };
     } catch (error) {
-      Notiflix.Notify.failure('Incorrect Input Format');
+      Notiflix.Notify.failure(error.response.data.error.message);
       Notiflix.Loading.remove();
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -817,8 +873,13 @@ export const fetchContactById = createAsyncThunk(
       const response = await axios.get(`/contacts/${id}`);
       console.log (response.data);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -830,8 +891,13 @@ export const fetchSortedAllContactById = createAsyncThunk(
       const response = await axios.get(`/contacts/${id}`);
       console.log (response.data);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -843,8 +909,13 @@ export const fetchSortedPendingContactById = createAsyncThunk(
       const response = await axios.get(`/contacts/${id}`);
       //console.log (response.data);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -856,8 +927,13 @@ export const fetchSortedCompletedContactById = createAsyncThunk(
       const response = await axios.get(`/contacts/${id}`);
       //console.log (response.data);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -869,8 +945,13 @@ export const fetchSortedPastDueContactById = createAsyncThunk(
       const response = await axios.get(`/contacts/${id}`);
       //console.log (response.data);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        Notiflix.Notify.failure('Invalid Session, login again');
+      }
+      Notiflix.Notify.failure(error.response.data.error.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );
@@ -912,7 +993,7 @@ export const deleteContact = createAsyncThunk(
       
       return res.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(null);
     }
   }
 );          
@@ -927,18 +1008,31 @@ export const deleteContact = createAsyncThunk(
 
        const res = await axios.get('/contacts');
        const state = thunkAPI.getState();
+       const isOnPending = state.auth.pending;
+       const isOnFulfilled = state.auth.fulfilled;
+       const isOnScheduler = state.auth.scheduler;
        const selectedSortedPendingContact = state.contacts.contacts.selectedSortedPendingContact;
        const selectedSortedCompletedContact = state.contacts.contacts.selectedSortedCompletedContact;
-        if (selectedSortedPendingContact._id === myUpdateStatusId && status === true) {
+        if (status === true && isOnPending === true && isOnScheduler === false) {
           thunkAPI.dispatch(closeSortedPendingModal());
+          Notiflix.Notify.success('Appointment moved to Fulfilled Tab');
+        }
+       
+       if (status === false && isOnFulfilled === true && isOnScheduler === false) {
+         thunkAPI.dispatch(closeSortedCompletedModal());
+         Notiflix.Notify.success('Appointment moved to Pending Tab');
        }
        
-       if (selectedSortedCompletedContact._id === myUpdateStatusId && status === false) {
-          thunkAPI.dispatch(closeSortedCompletedModal());
-        }
        return res.data;
      } catch (e) {
-       return thunkAPI.rejectWithValue(e.message);
+       return thunkAPI.rejectWithValue(null);
      }
    }
- );                                               
+);    
+ 
+export const saveCustomerName = createAsyncThunk(
+  'customer/save',
+  async name => {
+    return name;
+  }
+);

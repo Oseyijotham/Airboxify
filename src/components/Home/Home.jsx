@@ -25,6 +25,7 @@ import { useRef } from 'react';
 
 export const Home = () => {
   const myRef = useRef();
+  const sectionRef = useRef(null);
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -35,6 +36,11 @@ export const Home = () => {
   const [isThreeHovered, setIsThreeHovered] = useState(false);
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
+   const scrollToSection = () => {
+     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+   };
+
   const handleImageChange = e => {
     console.log("fert");
     let file = e.target.files[0];
@@ -82,9 +88,9 @@ export const Home = () => {
         </div>
       </div>
 
-      <Link to="/sharedLayout/tasks" className={css.homeLink}>
+      <button onClick={scrollToSection} className={css.homeLink}>
         View Admin Dashboard
-      </Link>
+      </button>
 
       <div className={css.hero}>
         <div className={css.offersLabelWrapper}>
@@ -121,7 +127,7 @@ export const Home = () => {
                 setIsOneHovered(false);
               }}
             >
-              <Link to="/sharedLayout/tasks" className={css.movieInfo}>
+              <Link to="/sharedLayout/sheduler" className={css.movieInfo}>
                 <div className={css.catOverlay}>
                   <img
                     className={css.movieImage}
@@ -247,7 +253,7 @@ export const Home = () => {
       {isLoading && !error && <div>Please wait...</div>}
       {error && <div>There was an error</div>}
 
-      <div className={css.detailsSection}>
+      <div className={css.detailsSection} ref={sectionRef}>
         <h2 className={css.detailsSectionTitle}>ADMIN DASHBOARD</h2>
         <div className={css.detailsImageWrapper}>
           <img

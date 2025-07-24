@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { selectContacts } from '../../redux/AppRedux/selectors';
 import {
   selectContactsFilter,
@@ -112,14 +112,23 @@ export const ContactList = ({ children }) => {
      contact =>
        contact.name.toLowerCase().includes(filterValue.trim().toLowerCase()) &&
        filterValue.trim() !== ''
-   );
+  );
+  
+  useEffect(()=>{},[contacts])
 
   return (
     <div className={css.contactsSection}>
       <h3 className={css.contactsTitle}>Appointments / Booking List</h3>
       {children}
       {filterValue === '' && contacts.length !== 0 && (
-        <ul className={css.contactsList}>
+        <ul
+          className={css.contactsList}
+          style={{
+            height: `${
+              contacts.length >= 4 ? '305px' : "auto" 
+            }`,
+          }}
+        >
           {contacts.map(contact => {
             const myindex = contacts.indexOf(contact);
             if (myindex >= lowerLimit && myindex < upperLimit) {

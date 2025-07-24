@@ -25,6 +25,8 @@ import css from './SharedLayout.module.css';
 import { Link } from 'react-router-dom';
 import { selectUser } from '../../redux/AuthRedux/selectors';
 import { ThreeCircles } from 'react-loader-spinner';
+import { setScheduler } from '../../redux/AuthRedux/operations';
+
 
 
 export const SharedLayout = () => {
@@ -34,6 +36,9 @@ export const SharedLayout = () => {
   const { user } = useAuthHook();
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const handleShedular = () => {
+       dispatch(setScheduler());
+    }
   
   return (
     <Container>
@@ -60,7 +65,7 @@ export const SharedLayout = () => {
         ></div>
         <nav>
           <Linker to="/sharedLayout/Home">Home</Linker>
-          <Linker to="/sharedLayout/tasks">Scheduler</Linker>
+          <Linker to="/sharedLayout/sheduler">Scheduler</Linker>
           <Linker to="/sharedLayout/sorting">Sorting</Linker>
           <Linker to="/sharedLayout/profile">My Profile</Linker>
           <Button type="button" onClick={() => dispatch(logOut())}>
@@ -122,9 +127,12 @@ export const SharedLayout = () => {
 
                 <li className={css.headerWindowNavItem}>
                   <Link
-                    to="/sharedLayout/tasks"
+                    to="/sharedLayout/sheduler"
                     className={css.headerWindowNavLink}
-                    onClick={() => setMenuHide(true)}
+                    onClick={() => {
+                      setMenuHide(true);
+                      handleShedular();
+                    }}
                   >
                     Scheduler
                   </Link>
@@ -161,16 +169,22 @@ export const SharedLayout = () => {
         </div>
       </div>
 
-      <Suspense fallback={<div><ThreeCircles
-                    visible={true}
-                    height="80"
-                    width="80"
-                    color="#9225ff"
-                    radius="9"
-                    ariaLabel="three-dots-loading"
-                    wrapperStyle={{}}
-                    wrapperClass={css.loader}
-                  /></div>}>
+      <Suspense
+        fallback={
+          <div>
+            <ThreeCircles
+              visible={true}
+              height="80"
+              width="80"
+              color="#9225ff"
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass={css.loader}
+            />
+          </div>
+        }
+      >
         <Outlet />
       </Suspense>
     </Container>

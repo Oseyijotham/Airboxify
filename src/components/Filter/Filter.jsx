@@ -58,13 +58,13 @@ export const Filter = () => {
   return (
     <div className={css.contactList}>
       <label htmlFor={searchTermId}>
-        <span className={css.formLabel}>Search Appointments By Title:</span>
+        <span className={css.formLabel}>Search Appointments By Customer:</span>
         <input
           type="text"
-          placeholder="Enter Task title"
+          placeholder="Enter Customer Name"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Enter Task Title"
+          title="Enter Customer Name"
           required
           onChange={handleSearch}
           id={searchTermId}

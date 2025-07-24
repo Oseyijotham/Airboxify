@@ -36,6 +36,8 @@ export const selectFilterUp = state => state.contacts.contacts.filterUpLimit;
 
 export const selectFilterDown = state => state.contacts.contacts.filterDownLimit;
 
+export const selectCustomerName = state => state.contacts.contacts.customerName;
+
 export const selectOpenMobileAndTabModal = state => state.contacts.contacts.openMyMobileAndTabModal;
 
 export const selectOpenAllMobileAndTabModal = state => state.contacts.contacts.openMyAllMobileAndTabModal;

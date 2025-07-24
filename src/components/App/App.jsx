@@ -100,7 +100,7 @@ export const App = () => {
             element={<PrivateRoute redirectTo="/" component={<Home />} />}
           />
           <Route
-            path="tasks"
+            path="sheduler"
             element={<PrivateRoute redirectTo="/" component={<Contacts />} />}
           />
           <Route path="sorting" element={<SharedSortingLayout />}>

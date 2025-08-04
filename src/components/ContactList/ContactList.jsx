@@ -125,7 +125,7 @@ export const ContactList = ({ children }) => {
           className={css.contactsList}
           style={{
             height: `${
-              contacts.length >= 4 ? '305px' : "auto" 
+              contacts.length >= 4 ? '296px' : "auto" 
             }`,
           }}
         >

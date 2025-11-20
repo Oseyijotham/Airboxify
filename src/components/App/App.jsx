@@ -34,26 +34,37 @@ export const App = () => {
   // Effect to check and decode token
   /*By the way the token is null in the initial state so when the user logs in the value of the token changes which triggers the
   useEffect hook below*/
-  useEffect(() => {
-    if (token) {
-      
-        const interval = setInterval(() => {
-          const { exp } = jwtDecode(token); // Decode token to get expiry
-          const currentTime = Math.floor(Date.now() / 1000);;
+useEffect(() => {
+  if (!token) return;
 
-          if (exp - currentTime <= 120) {
-            Notiflix.Notify.warning('Session timeout');
-            dispatch(logOut()); // Force logout 60 seconds or less before token expires
-            clearInterval(interval); // Cleanup
-          }
-          console.log("check")
-        }, 60 * 1000); // Check every 1 minute
-      
-    
-    
+  let decoded;
+  try {
+    decoded = jwtDecode(token);
+  } catch (e) {
+    dispatch(logOut());
+    return;
+  }
 
+  const { exp } = decoded;
+
+  const checkExpiry = () => {
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    if (exp - currentTime <= 120) {
+      Notiflix.Notify.warning('Session timeout');
+      dispatch(logOut());
     }
-  }, [token, dispatch]);
+  };
+
+  // Run immediate check
+  checkExpiry();
+
+  // Set interval for repeating checks
+  const interval = setInterval(checkExpiry, 60 * 1000);
+
+  return () => clearInterval(interval); // cleanup
+}, [token, dispatch]);
+
 
   useEffect(() => {
     dispatch(refreshUser());

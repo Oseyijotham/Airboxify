@@ -8,7 +8,7 @@ import Notiflix from 'notiflix';
 
 //axios.defaults.baseURL = 'https://airboxify-backend-wz8v.onrender.com/api';
 
-axios.defaults.baseURL = 'https://airboxify-backend-ax3m.onrender.com';
+axios.defaults.baseURL = 'https://airboxify-backend-ax3m.onrender.com/api';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

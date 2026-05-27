@@ -4,9 +4,9 @@ import Notiflix from 'notiflix';
 
 //axios.defaults.baseURL = 'http://localhost:8001/api';
 
-axios.defaults.baseURL = 'https://airboxify-backend.onrender.com/api';
+//axios.defaults.baseURL = 'https://airboxify-backend.onrender.com/api';
 
-//axios.defaults.baseURL = 'https://airboxify-backend-wz8v.onrender.com/api';
+axios.defaults.baseURL = 'https://airboxify-backend-wz8v.onrender.com/api';
 
 //axios.defaults.baseURL = 'https://airboxify-backend-ax3m.onrender.com/api';
 
